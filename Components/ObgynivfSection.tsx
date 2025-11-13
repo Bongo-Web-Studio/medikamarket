@@ -124,9 +124,9 @@ export default function ObgynivfSection(): React.ReactElement {
             >
               {extendedCategories.map((cat, idx) => (
                 <SwiperSlide key={idx}>
-                  <div className="w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+                  <div className="w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                     {cat.viewAll ? (
-                      <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
+                      <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-3xl">
                         <h2 className="text-lg sm:text-xl font-semibold mb-4">
                           View All Tests
                         </h2>
@@ -139,7 +139,7 @@ export default function ObgynivfSection(): React.ReactElement {
     
                         {/* Image Section */}
                         <div
-                          className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
+                          className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-3xl`}
                         >
                           {cat.discount && (
                             <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
@@ -165,7 +165,7 @@ export default function ObgynivfSection(): React.ReactElement {
                         </div>
     
                         {/* Text Section */}
-                        <div className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-2xl `}>
+                        <div className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-3xl `}>
                           <div>
                             <h2 className="text-base sm:text-lg font-medium text-gray-900 line-clamp-2 min-h-[56px]">
                               {cat.test}

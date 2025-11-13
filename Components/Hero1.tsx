@@ -162,7 +162,7 @@ export default function Hero1() {
         animate="visible"
         className=" flex justify-center"
       >
-        <div className="relative w-[98vw] lg:w-[95vw]  overflow-hidden rounded-2xl  ">
+        <div className="relative w-[98vw] lg:w-[95vw]  overflow-hidden rounded-3xl  ">
           {/* <FullCardCarousel /> */}
         </div>
       </motion.div>

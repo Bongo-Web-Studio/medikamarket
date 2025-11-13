@@ -59,7 +59,7 @@ export default function New4() {
           {looped.map((t, i) => (
             <div
               key={i}
-              className="marquee-item flex-none relative rounded-2xl overflow-hidden shadow-lg"
+              className="marquee-item flex-none relative rounded-3xl overflow-hidden shadow-lg"
             >
               <img
                 src={t.img}

@@ -102,7 +102,7 @@ export default function PhysiotherapySection(): React.ReactElement {
     <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
       <h2
        
-        className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold"
+        className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold "
       >
       <span className="">  Popular Physiotherapy. </span> <span  className="text-[#6E6E73]"> Equipment</span>
       </h2>
@@ -126,7 +126,7 @@ export default function PhysiotherapySection(): React.ReactElement {
                <SwiperSlide key={idx}>
                  <div className="ml-5 mt-5 w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                    {cat.viewAll ? (
-                     <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
+                     <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-3xl">
                        <h2 className="text-lg sm:text-xl font-semibold mb-4">
                          View All Tests
                        </h2>
@@ -139,7 +139,7 @@ export default function PhysiotherapySection(): React.ReactElement {
    
                        {/* Image Section */}
                        <div
-                         className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
+                         className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-3xl`}
                        >
                          {cat.discount && (
                            <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
@@ -163,7 +163,7 @@ export default function PhysiotherapySection(): React.ReactElement {
                        </div>
    
                        {/* Text Section */}
-                       <div className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-2xl `}>
+                       <div className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-3xl `}>
                          <div>
                            <h2 className="text-base sm:text-lg font-medium text-gray-900 line-clamp-2 min-h-[56px]">
                              {cat.test}
@@ -191,13 +191,13 @@ export default function PhysiotherapySection(): React.ReactElement {
                          <div className="mt-6 flex gap-3">
                            <motion.button
                              whileTap={{ scale: 0.95 }}
-                             className="w-full flex items-center justify-center gap-2  bg-white text-gray-700 py-2 border border-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-200 transition"
+                             className="w-full flex items-center justify-center gap-2 rounded-3xl  bg-white text-gray-700 py-2 border border-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-200 transition"
                            >
                              <FiInfo size={16} /> View Details
                            </motion.button>
                            <motion.button
                              whileTap={{ scale: 0.95 }}
-                             className={`w-full flex items-center justify-center gap-2 bg-[#155DFC] text-white py-2  text-xs sm:text-sm font-medium hover:opacity-90 transition`}
+                             className={`w-full flex items-center justify-center gap-2 rounded-3xl bg-[#0077ED] text-white py-2  text-xs sm:text-sm font-medium hover:opacity-90 transition`}
                            >
                              <FiShoppingCart size={16} /> Add to Cart
                            </motion.button>

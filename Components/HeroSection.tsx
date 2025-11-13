@@ -53,11 +53,11 @@ export default function HeroSection() {
         <div className="flex flex-col items-center justify-center mt-10 lg:mt-0 w-full lg:w-auto">
           <h1
             style={{ fontFamily: "DynaPuff" }}
-            className="w-full sm:w-[7cm] p-4 sm:p-5 bg-white mb-6 sm:mb-10 text-lg sm:text-2xl md:text-3xl uppercase text-[#193200] rounded-2xl sm:rounded-3xl text-center"
+            className="w-full sm:w-[7cm] p-4 sm:p-5 bg-white mb-6 sm:mb-10 text-lg sm:text-2xl md:text-3xl uppercase text-[#193200] rounded-3xl sm:rounded-3xl text-center"
           >
             30 min at your door step
           </h1>
-          <div className="bg-white rounded-2xl border-2 border-dashed border-gray-300 p-4 sm:p-6 shadow-lg w-full max-w-xs sm:max-w-sm">
+          <div className="bg-white rounded-3xl border-2 border-dashed border-gray-300 p-4 sm:p-6 shadow-lg w-full max-w-xs sm:max-w-sm">
             <div className="flex items-center justify-between">
               <h3 className="text-base sm:text-lg font-semibold text-[#193200]">
                 Upload Lab Request

@@ -58,7 +58,7 @@ const MacDockSearch: React.FC = () => {
 
         <div className="flex items-center gap-2 sm:gap-4 md:gap-6 px-3 sm:px-2 md:px-5 py-3 sm:py-3.5 md:py-4 rounded-[30px] sm:rounded-[36px] md:rounded-[40px] bg-white backdrop-blur-2xl  shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
           {/* Mini Search Input (click/focus opens full overlay) */}
-          <div className="flex gap-2 items-center w-[5cm] sm:w-56 md:w-72 h-[1.4cm] sm:h-12 md:h-[2cm] px-3 sm:px-4 rounded-2xl sm:rounded-3xl bg-white backdrop-blur-md border border-[#155DFC] shadow-xl">
+          <div className="flex gap-2 items-center w-[5cm] sm:w-56 md:w-72 h-[1.4cm] sm:h-12 md:h-[2cm] px-3 sm:px-4 rounded-3xl sm:rounded-3xl bg-white backdrop-blur-md border border-[#155DFC] shadow-xl">
             <FaSearch className="text-gray-600 text-sm md:text-base" />
             <input
               type="text"
@@ -88,7 +88,7 @@ const MacDockSearch: React.FC = () => {
               type="button"
             >
               <div
-                className={`flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl sm:rounded-2xl md:rounded-3xl shadow-lg p-2 sm:p-2.5 md:p-3 bg-gradient-to-br ${item.bgGradient} shadow-xl border border-white`}
+                className={`flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-3xl sm:rounded-3xl md:rounded-3xl shadow-lg p-2 sm:p-2.5 md:p-3 bg-gradient-to-br ${item.bgGradient} shadow-xl border border-white`}
               >
                 {item.icon}
                 <span className="text-[0.6rem] sm:text-xs md:text-sm font-semibold text-white text-center">

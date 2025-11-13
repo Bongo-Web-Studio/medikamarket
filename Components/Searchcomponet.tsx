@@ -299,7 +299,7 @@ export default function SearchComponent({ query, setQuery, onClose, onSelect }: 
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 8 }}
         transition={{ type: "spring", stiffness: 320, damping: 28 }}
-        className="relative z-60 w-full max-w-[720px] sm:max-w-[640px] md:max-w-[900px] max-h-[90vh] rounded-2xl bg-white border border-white/40 shadow-xl p-4 mx-4 overflow-hidden"
+        className="relative z-60 w-full max-w-[720px] sm:max-w-[640px] md:max-w-[900px] max-h-[90vh] rounded-3xl bg-white border border-white/40 shadow-xl p-4 mx-4 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

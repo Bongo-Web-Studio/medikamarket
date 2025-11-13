@@ -42,7 +42,7 @@ export default function FullCardCarousel(): React.ReactElement {
   const goTo = (i: number): void => setIndex(i);
 
   return (
-    <div className="w-full bg-white text-black flex flex-col items-center justify-center overflow-hidden rounded-2xl">
+    <div className="w-full bg-white text-black flex flex-col items-center justify-center overflow-hidden rounded-3xl">
       {/* Carousel */}
       <div className="relative w-full max-w-6xl aspect-[35/16]">
         <motion.div
@@ -53,7 +53,7 @@ export default function FullCardCarousel(): React.ReactElement {
           {slides.map((slide) => (
             <div
               key={slide.id}
-              className="w-full aspect-[35/16] flex-shrink-0 overflow-hidden rounded-2xl"
+              className="w-full aspect-[35/16] flex-shrink-0 overflow-hidden rounded-3xl"
             >
               <img
                 className="w-full h-full object-cover object-top"

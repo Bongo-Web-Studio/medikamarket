@@ -176,7 +176,7 @@ export default function NavbarAppleStyle(): React.ReactElement {
       {/* Cart Panel */}
       {showCart && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl p-4 animate-fadeIn">
+          <div className="w-full max-w-md bg-white dark:bg-neutral-900 rounded-3xl shadow-2xl p-4 animate-fadeIn">
             <CardSection
               onClose={() => setShowCart(false)}
               onProceed={() => setShowCart(false)}

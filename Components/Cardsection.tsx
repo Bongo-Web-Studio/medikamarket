@@ -85,7 +85,7 @@ const CardSection: React.FC<CardSectionProps> = ({ initialItems, onProceed, onCl
 
       {/* Sliding panel */}
       <motion.div
-        className="relative z-50 w-[800px] h-[75vh] flex flex-col rounded-2xl overflow-hidden bg-gradient-to-b from-white/95 to-white/90 border border-white/40 shadow-2xl"
+        className="relative z-50 w-[800px] h-[75vh] flex flex-col rounded-3xl overflow-hidden bg-gradient-to-b from-white/95 to-white/90 border border-white/40 shadow-2xl"
         initial="hidden"
         animate="enter"
         exit="exit"
