@@ -130,7 +130,7 @@ export default function DentalSection(): React.ReactElement {
 
       <div className="relative">
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation]}  
           onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
           breakpoints={{
             0: { slidesPerView: 1.2, spaceBetween: 12 },
@@ -249,7 +249,7 @@ export default function DentalSection(): React.ReactElement {
 
         <button
           onClick={() => swiperRef.current?.slidePrev()}
-          className="absolute top-1/2 -translate-y-1/2 left-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
+          className="absolute top-1/2 -translate-y-1/2 left-2 z-20 w-7 h-7 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
           aria-label="Previous"
         >
           <FiArrowLeft size={20} />
@@ -257,7 +257,7 @@ export default function DentalSection(): React.ReactElement {
 
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="absolute top-1/2 -translate-y-1/2 right-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
+          className="absolute top-1/2 -translate-y-1/2 right-2 z-20 w-7 h-7 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
           aria-label="Next"
         >
           <FiArrowRight size={20} />

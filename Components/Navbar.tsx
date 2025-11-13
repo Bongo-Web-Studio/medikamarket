@@ -1,33 +1,42 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import TopSelectionScroll from "./TopSelectionScroll";
-import { useCartStore } from "@/store/cartStore/cartStore";
- // ✅ import Zustand store
+import { useCartStore } from "@/store/cartStore/cartStore"; // Zustand store
 
 const CardSection = dynamic(() => import("./Cardsection"), { ssr: false });
 
 export default function NavbarAmazonClone(): React.ReactElement {
   const [query, setQuery] = useState("");
   const [showCart, setShowCart] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
-  // ✅ Get cart count from Zustand store
   const cartCount = useCartStore((state) => state.cartCount);
 
   return (
     <header className="w-full font-sans">
       {/* Top Bar */}
       <div className="w-full bg-[#004BF6] text-white text-xs">
-        <div className=" mx-auto flex items-center justify-between px-4 md:px-6 h-[55px]">
+        <div className="mx-auto flex items-center justify-between px-3 sm:px-4 md:px-6 h-[55px] relative">
           {/* Left Section */}
           <div className="flex items-center gap-3">
+            {/* Hamburger for Mobile */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-white text-xl focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+
             {/* Amazon Logo */}
             <div className="flex items-center">
               <svg
                 viewBox="0 0 100 30"
-                className="w-24 h-7"
+                className="w-20 sm:w-24 h-6 sm:h-7"
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
                 aria-label="Amazon"
@@ -53,7 +62,7 @@ export default function NavbarAmazonClone(): React.ReactElement {
             </div>
 
             {/* Delivery Info */}
-            <div className="leading-tight text-gray-300">
+            <div className="hidden sm:block leading-tight text-gray-300">
               <div className="text-[12px] font-medium text-gray-200">
                 Delivering to Pune 411006
               </div>
@@ -63,15 +72,14 @@ export default function NavbarAmazonClone(): React.ReactElement {
             </div>
           </div>
 
-          {/* Search Bar */}
-          <div className="flex-1 max-w-[720px] px-4">
-            <div className="flex items-center bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition">
-             
+          {/* Search Bar (Desktop) */}
+          <div className="hidden md:flex flex-1 max-w-[720px] px-4">
+            <div className="flex items-center bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition w-full">
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search"
-                aria-label="Search "
+                aria-label="Search"
                 className="flex-1 px-4 py-2.5 text-sm text-gray-800 placeholder-gray-500 outline-none"
               />
               <button
@@ -84,8 +92,17 @@ export default function NavbarAmazonClone(): React.ReactElement {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-5 min-w-[260px] justify-end text-sm">
-            {/* Flag + Language */}
+          <div className="flex items-center gap-3 sm:gap-5 min-w-fit justify-end text-sm">
+            {/* Search Icon (Mobile) */}
+            <button
+              onClick={() => setShowSearch(!showSearch)}
+              className="md:hidden text-white text-lg"
+              aria-label="Toggle Search"
+            >
+              <FaSearch />
+            </button>
+
+            {/* Language */}
             <div className="hidden md:flex items-center gap-1 cursor-pointer">
               <div className="w-6 h-4 rounded-sm border border-gray-400 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-r from-orange-500 via-white to-green-600" />
@@ -117,8 +134,6 @@ export default function NavbarAmazonClone(): React.ReactElement {
             >
               <FaShoppingCart className="text-white text-xl" />
               <span className="hidden md:inline font-semibold">Cart</span>
-
-              {/* ✅ Zustand badge count */}
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-2 bg-[#F08804] text-[11px] px-1.5 py-[1px] rounded text-black font-bold">
                   {cartCount}
@@ -127,7 +142,34 @@ export default function NavbarAmazonClone(): React.ReactElement {
             </button>
           </div>
         </div>
+
+        {/* Mobile Search Bar */}
+        {showSearch && (
+          <div className="md:hidden w-full bg-white p-2">
+            <div className="flex items-center rounded-md overflow-hidden shadow">
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products..."
+                className="flex-1 px-3 py-2 text-sm text-gray-800 outline-none"
+              />
+              <button className="px-4 py-2 bg-orange-500 text-white">
+                <FaSearch />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#004BF6] text-white text-sm p-4 flex flex-col gap-3 border-t border-white/10">
+          <div className="cursor-pointer hover:underline">Hello, sign in</div>
+          <div className="cursor-pointer hover:underline">Account & Lists</div>
+          <div className="cursor-pointer hover:underline">Returns & Orders</div>
+          <div className="cursor-pointer hover:underline">Customer Service</div>
+        </div>
+      )}
 
       {/* Categories Row */}
       <div className="w-full">
