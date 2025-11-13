@@ -123,7 +123,7 @@ export default function NephrologySection(): React.ReactElement {
           }}
           navigation={false}
           loop={false}
-          className="w-[98vw]  h-[61vh] bg-[#FFE082] rounded-4xl "
+          className="w-[98vw]  h-[66vh] bg-[#FFE082] rounded-4xl "
         >
           {extendedCategories.map((cat, idx) => (
             <SwiperSlide key={idx}>

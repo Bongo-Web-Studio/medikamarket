@@ -123,7 +123,7 @@ export default function ConsumablesSection(): React.ReactElement {
           }}
           navigation={false}
           loop={false}
-          className="w-[98vw] h-[61vh] bg-[#FFCCBC] rounded-4xl"
+          className="w-[98vw] h-[66vh] bg-[#FFCCBC] rounded-4xl"
         >
           {extendedCategories.map((cat, idx) => (
             <SwiperSlide key={idx}>
