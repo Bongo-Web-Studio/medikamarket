@@ -30,18 +30,15 @@ export default function NavbarAppleStyle(): React.ReactElement {
       <div className="w-full text-black dark:text-white">
         <div className="mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 h-[60px] relative">
 
-
-                    <img className="w-[5cm]" src="https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Mb_logo.png?tr=w-400,q-100,f-avif" alt="" />
-
-          {/* Left Section */}
-          <div className="flex items-center gap-4">
+      {/* Left Section */}
+          <div className="flex items-center gap-4 text-neutral-800 md:hidden">
             {/* Hamburger for Mobile */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden text-xl focus:outline-none"
               aria-label="Toggle Menu"
             >
-              {menuOpen ? <FaTimes /> : <FaBars />}'
+              {menuOpen ? <FaTimes /> : <FaBars />}
               
               
               
@@ -49,6 +46,9 @@ export default function NavbarAppleStyle(): React.ReactElement {
 
          
           </div>
+                    <img className="w-[5cm]" src="https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Mb_logo.png?tr=w-400,q-100,f-avif" alt="" />
+
+    
 
 
 
@@ -90,7 +90,7 @@ export default function NavbarAppleStyle(): React.ReactElement {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-3 sm:gap-5 min-w-fit justify-end text-sm">
+          <div className="flex items-center gap-3 sm:gap-5 min-w-fit justify-end text-sm text-neutral-800">
             {/* Search Icon (Mobile) */}
             <button
               onClick={() => setShowSearch(!showSearch)}
@@ -114,7 +114,7 @@ export default function NavbarAppleStyle(): React.ReactElement {
               aria-label="Cart"
             >
               <FaShoppingCart className="text-lg text-white" />
-              <span className="hidden md:inline font-medium">Cart</span>
+              <span className="hidden md:inline font-medium text-white">Cart</span>
               {cartCount > 0 && (
                 <span
                   className="
@@ -132,18 +132,18 @@ export default function NavbarAppleStyle(): React.ReactElement {
 
         {/* Mobile Search */}
         {showSearch && (
-          <div className="md:hidden w-full bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xl p-2">
-            <div className="flex items-center rounded-full overflow-hidden shadow-md">
+          <div className="md:hidden w-full  backdrop-blur-xl p-2">
+            <div className="flex items-center rounded-full overflow-hidden shadow-md bg-white">
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search..."
                 className="
-                  flex-1 px-4 py-2 text-sm text-gray-800 dark:text-gray-200 
+                  flex-1 px-4 py-2 text-sm text-gray-800 
                   bg-transparent outline-none
                 "
               />
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-r-full">
+              <button className="px-4 py-2 bg-blue-500  rounded-r-full">
                 <FaSearch />
               </button>
             </div>
@@ -155,9 +155,9 @@ export default function NavbarAppleStyle(): React.ReactElement {
       {menuOpen && (
         <div
           className="
-            md:hidden text-black dark:text-white text-sm 
+            md:hidden text-neutral-800 text-sm 
             p-4 flex flex-col gap-3 border-t border-white/10 
-            bg-white/60 dark:bg-neutral-800/60 backdrop-blur-2xl
+            backdrop-blur-2xl
             animate-fadeIn
           "
         >
