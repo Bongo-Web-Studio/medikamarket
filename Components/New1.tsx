@@ -110,23 +110,7 @@ export default function New1(): React.ReactElement {
       <div className=" px-4 sm:px-8 md:px-20  xl:px- py-10 sm:py-16 lg:py-">
         {/* Swiper Carousel */}
         <div className="w-full  relative ">
-          {/* Back Button */}
-          <button
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="absolute -left-6 sm:-left-10 top-1/2 -translate-y-1/2 z-10  w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-            aria-label="previous"
-          >
-            <FiArrowLeft size={20} />
-          </button>
-
-          {/* Forward Button */}
-          <button
-            onClick={() => swiperRef.current?.slideNext()}
-            className="absolute -right-6 sm:-right-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-            aria-label="next"
-          >
-            <FiArrowRight size={20} />
-          </button>
+        
 
           <Swiper
             modules={[Navigation]}

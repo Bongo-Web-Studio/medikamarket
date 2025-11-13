@@ -70,20 +70,20 @@ export default function New5() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-10 flex justify-center items-center flex-col bg-white">
+    <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-10 flex justify-center items-center flex-col">
       {/* Header */}
       <header className="mb-8 text-center">
         <motion.h2
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[#004BF6]"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-black"
         >
           FAQ
         </motion.h2>
       </header>
 
       {/* FAQ List */}
-      <div className="w-full max-w-5xl divide-y divide-gray-200 rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+      <div className="w-full max-w-5xl divide-y divide-gray-200 rounded-xl border border-gray-200 overflow-hidden shadow-sm bg-white">
         {faqs.map((f, i) => (
           <motion.div
             key={i}

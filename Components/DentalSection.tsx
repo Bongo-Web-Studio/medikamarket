@@ -18,7 +18,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useCartStore } from "@/store/cartStore/cartStore";
 
-
 type Category = {
   image?: string;
   bg?: string;
@@ -41,7 +40,7 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
     image:
@@ -52,7 +51,7 @@ const categories: Category[] = [
     originalPrice: 1200,
     discount: "25%",
     reportsIn: "24 Hours",
-    size: "w-[145px] h-auto ml-10",
+    size: "w-[145px] h-auto",
   },
   {
     image:
@@ -63,19 +62,18 @@ const categories: Category[] = [
     originalPrice: 1600,
     discount: "19%",
     reportsIn: "18 Hours",
-    size: "w-[250px] h-auto ml-20",
+    size: "w-[250px] h-auto ",
   },
   {
     image:
       "https://ik.imagekit.io/z6mqjyyzz/media/public/24c32e9742a843d2b_uni2.png?tr=w-126,q-60,f-avif",
     bg: "bg-[#F8BBD0]",
-    test:
-      "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
+    test: "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
     price: 999,
     originalPrice: 1400,
     discount: "28%",
     reportsIn: "15 Hours",
-    size: "w-[220px] h-auto mt-20",
+    size: "w-[220px] h-auto",
   },
   {
     image:
@@ -86,7 +84,7 @@ const categories: Category[] = [
     originalPrice: 2000,
     discount: "20%",
     reportsIn: "20 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
     image:
@@ -97,7 +95,7 @@ const categories: Category[] = [
     originalPrice: 1000,
     discount: "30%",
     reportsIn: "8 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
 ];
 
@@ -117,36 +115,31 @@ export default function DentalSection(): React.ReactElement {
   const addItem = useCartStore((state) => state.addItem);
 
   return (
-    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
-      <h2 className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black">
-        <span className=""> Popular Dental</span>{" "}
-        <span
-          style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}
-          className="text-[#155DFC]"
-        >
-          • Equipment
-        </span>
+    <div className="relative mx-auto py-10  select-none border-t border-gray-200  w-full h-full overflow-hidden">
+      <h2 className="text-start text-2xl lg:text-4xl mb-6 px-4 lg:ml-10 text-black font-semibold">
+        <span className=""> Popular Dental.</span>{" "}
+        <span className="text-[#6E6E73]">Equipment</span>
       </h2>
 
-      <div className="relative">
+      <div className="relative ml-12">
         <Swiper
-          modules={[Navigation]}  
+          modules={[Navigation]}
           onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
           breakpoints={{
             0: { slidesPerView: 1.2, spaceBetween: 12 },
             640: { slidesPerView: 2, spaceBetween: 16 },
             1024: { slidesPerView: 3, spaceBetween: 20 },
-            1280: { slidesPerView: 4, spaceBetween: 20 },
+            1280: { slidesPerView: 4.5, spaceBetween: 10 },
           }}
           navigation={false}
           loop={false}
-          className="w-[95vw] sm:w-[93vw] h-[63vh]"
+          className="w-[97vw] h-[61vh] bg-[#B2EBF2] rounded-4xl p-5"
         >
           {extendedCategories.map((cat, idx) => (
             <SwiperSlide key={idx}>
-              <div className="w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+              <div className=" ml-5 w-full max-w-[350px] mt-5 h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                 {cat.viewAll ? (
-                  <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
+                  <div className="flex flex-col justify-center items-center h-full text-[#155DFC] border-[2px] border-dashed border-[#155DFC] rounded-2xl">
                     <h2 className="text-lg sm:text-xl font-semibold mb-4">
                       View All Tests
                     </h2>
@@ -157,7 +150,7 @@ export default function DentalSection(): React.ReactElement {
                 ) : (
                   <>
                     <div
-                      className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
+                      className={`  relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
                     >
                       {cat.discount && (
                         <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
@@ -166,13 +159,7 @@ export default function DentalSection(): React.ReactElement {
                       )}
 
                       <p className="absolute top-2 left-2 flex items-center  duration-300">
-                        <div className=" flex justify-center items-center ">
-                          <img
-                            className="w-12 h-12"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR4q66dy4ndP_c7oFetKJmMDWurcVnDoFChA&s"
-                            alt=""
-                          />
-                        </div>
+                        <div className=" flex justify-center items-center "></div>
                       </p>
 
                       {cat.image && (
@@ -202,12 +189,6 @@ export default function DentalSection(): React.ReactElement {
                               ₹{cat.price}
                             </span>
                           )}
-                        </div>
-                        <div className="flex items-end text-gray-600 justify-center h-[1.2cm]">
-                          <div className="flex justify-center items-center gap-2 text-sm">
-                            <FiClock size={14} className="mt-1" /> Reports in:{" "}
-                            <span className="font-medium">{cat.reportsIn}</span>
-                          </div>
                         </div>
                       </div>
 
@@ -246,22 +227,6 @@ export default function DentalSection(): React.ReactElement {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button
-          onClick={() => swiperRef.current?.slidePrev()}
-          className="absolute top-1/2 -translate-y-1/2 left-2 z-20 w-7 h-7 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-          aria-label="Previous"
-        >
-          <FiArrowLeft size={20} />
-        </button>
-
-        <button
-          onClick={() => swiperRef.current?.slideNext()}
-          className="absolute top-1/2 -translate-y-1/2 right-2 z-20 w-7 h-7 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-          aria-label="Next"
-        >
-          <FiArrowRight size={20} />
-        </button>
       </div>
     </div>
   );

@@ -99,12 +99,12 @@ export default function RefurbishedSection(): React.ReactElement {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
+    <div className="relative mx-auto py-10 select-none border-t border-gray-200">
       <h2
        
-        className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black"
+        className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold"
       >
-      <span className="">  Popular Refurbished</span> <span  style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}   className="text-[#155DFC]">• Equipment</span>
+      <span className="">  Popular Refurbished. </span> <span     className="text-[#6E6E73]"> Equipment</span>
       </h2>
 
       

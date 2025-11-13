@@ -39,7 +39,7 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
     image:
@@ -50,7 +50,7 @@ const categories: Category[] = [
     originalPrice: 1200,
     discount: "25%",
     reportsIn: "24 Hours",
-    size: "w-[145px] h-auto ml-10",
+    size: "w-[145px] h-auto",
   },
   {
     image:
@@ -61,7 +61,7 @@ const categories: Category[] = [
     originalPrice: 1600,
     discount: "19%",
     reportsIn: "18 Hours",
-    size: "w-[250px] h-auto ml-20",
+    size: "w-[250px] h-auto",
   },
   {
     image:
@@ -72,7 +72,7 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "28%",
     reportsIn: "15 Hours",
-    size: "w-[220px] h-auto mt-20",
+    size: "w-[220px] h-auto ",
   },
   {
     image:
@@ -83,7 +83,7 @@ const categories: Category[] = [
     originalPrice: 2000,
     discount: "20%",
     reportsIn: "20 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
     image:
@@ -94,7 +94,7 @@ const categories: Category[] = [
     originalPrice: 1000,
     discount: "30%",
     reportsIn: "8 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
 ];
 
@@ -105,35 +105,35 @@ export default function DiagnosticsSection(): React.ReactElement {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
-      <h2 className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black">
-        <span className=""> Popular Diagnostics</span>{" "}
+    <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
+      <h2 className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold">
+        <span className=""> Popular Diagnostics.</span>{" "}
         <span
-          style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}
-          className="text-[#155DFC]"
+       
+          className="text-[#6E6E73]"
         >
-          • Equipment
+           Equipment
         </span>
       </h2>
 
     
-          <div className="relative">
+          <div className="relative ml-12">
             <Swiper
               modules={[Navigation]}
               onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
               breakpoints={{
-                0: { slidesPerView: 1.2, spaceBetween: 12 }, // mobile
-                640: { slidesPerView: 2, spaceBetween: 16 }, // tablets
-                1024: { slidesPerView: 3, spaceBetween: 20 }, // laptops
-                1280: { slidesPerView: 4, spaceBetween: 20 }, // desktops
+                0: { slidesPerView: 1.2, spaceBetween: 10 }, // mobile
+                640: { slidesPerView: 2, spaceBetween: 10 }, // tablets
+                1024: { slidesPerView: 3, spaceBetween: 10 }, // laptops
+                1280: { slidesPerView: 4.5, spaceBetween: 10 }, // desktops
               }}
               navigation={false}
               loop={false}
-              className="w-[95vw] sm:w-[93vw] h-[63vh]"
+              className="w-[98vw] h-[61vh] bg-[#FFF59D] rounded-4xl"
             >
               {extendedCategories.map((cat, idx) => (
                 <SwiperSlide key={idx}>
-                  <div className="w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+                  <div className=" ml-5 w-full max-w-[350px] mt-5 h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                     {cat.viewAll ? (
                       <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
                         <h2 className="text-lg sm:text-xl font-semibold mb-4">
@@ -157,9 +157,7 @@ export default function DiagnosticsSection(): React.ReactElement {
                           )}
                 
                             <p className="absolute top-2 left-2 flex items-center  duration-300">
-                                               <div className=" flex justify-center items-center ">
-                        <img className="w-12 h-12" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR4q66dy4ndP_c7oFetKJmMDWurcVnDoFChA&s" alt="" />
-                      </div>
+                  
                             </p>
                         
                     
@@ -191,12 +189,7 @@ export default function DiagnosticsSection(): React.ReactElement {
                                 </span>
                               )}
                             </div>
-                            <div className="flex items-end text-gray-600 justify-center h-[1.2cm]">
-                              <div className="flex justify-center items-center gap-2 text-sm">
-                                <FiClock size={14} className="mt-1" /> Reports in:{" "}
-                                <span className="font-medium">{cat.reportsIn}</span>
-                              </div>
-                            </div>
+                    
                           </div>
     
                           <div className="mt-6 flex gap-3">
@@ -221,21 +214,7 @@ export default function DiagnosticsSection(): React.ReactElement {
               ))}
             </Swiper>
     
-            {/* Prev Button */}
-            <button
-              onClick={() => swiperRef.current?.slidePrev()}
-              className="absolute top-1/2 -translate-y-1/2 left-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-            >
-              <FiArrowLeft size={20} />
-            </button>
     
-            {/* Next Button */}
-            <button
-              onClick={() => swiperRef.current?.slideNext()}
-              className="absolute top-1/2 -translate-y-1/2 right-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-            >
-              <FiArrowRight size={20} />
-            </button>
           </div>
     </div>
   );

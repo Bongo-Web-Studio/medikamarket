@@ -8,13 +8,13 @@ export default function New4() {
       name: "Naidu",
       title: "Aurora Bio Solutions, Hyderabad",
       quote: "నా Inventory ని Swipe లో చాలా సులువుగా మేనేజ్ చేసుకుంటున్నాను.",
-      img: "https://getswipe.azureedge.net/getswipe/images/customers/46.avif",
+      img: "https://getswipe.azureedge.net/getswipe/images/customers/53.avif",
     },
     {
       name: "Harsh Sethi",
       title: "Tron Technologies, New Delhi",
       quote: "Swipe is a must–have for all businesses.",
-      img: "https://getswipe.azureedge.net/getswipe/images/customers/46.avif",
+      img: "https://getswipe.azureedge.net/getswipe/images/customers/35.avif",
     },
     {
       name: "Vipin Kumar",
@@ -26,24 +26,30 @@ export default function New4() {
       name: "Dr. P. Naveen Kumar",
       title: "Physiotherapist, Hyderabad",
       quote: "I manage both my clinics easily with Swipe.",
-      img: "https://getswipe.azureedge.net/getswipe/images/customers/46.avif",
+      img: "https://getswipe.azureedge.net/getswipe/images/customers/4.avif",
+    },
+        {
+      name: "Dr. P. Naveen Kumar",
+      title: "Physiotherapist, Hyderabad",
+      quote: "I manage both my clinics easily with Swipe.",
+      img: "https://getswipe.azureedge.net/getswipe/images/customers/7.avif",
     },
   ];
 
   const looped = [...testimonials, ...testimonials]; // duplicate for smooth loop
 
   return (
-    <section className="bg-[#004BF6] overflow-hidden py-16 md:py-20">
+    <section className="bg- border-t border-gray-200 py-16 md:py-20 w-full h-full overflow-hidden ">
       {/* Heading */}
       <div className="text-center mb-12 px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black">
           The love is mutual{" "}
           <span role="img" aria-label="love">
             😍
           </span>
         </h2>
-        <p className="text-white mt-3 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
-          We’re building for the doers, dreamers, and every business in between.
+        <p className="text-[#6E6E73] mt-3 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          We’re building for the truth in ower customer and make every customer happy
         </p>
       </div>
 

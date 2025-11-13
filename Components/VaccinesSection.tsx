@@ -38,7 +38,7 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
     image: "https://ik.imagekit.io/z6mqjyyzz/media/public/800de06d23a945579_image.png?tr=w-150,q-60,f-avif  ",
@@ -102,7 +102,7 @@ export default function VaccinesSection(): React.ReactElement {
     <div className="relative mx-auto py-10 bg-white select-none border-t border-[#155DFC]">
       <h2
        
-        className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black"
+        className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black"
       >
       <span className="">  Popular Vaccines</span> <span  style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}   className="text-[#155DFC]">• Equipment</span>
       </h2>

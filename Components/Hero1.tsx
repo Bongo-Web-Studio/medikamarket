@@ -83,11 +83,11 @@ export default function Hero1() {
   };
 
   return (
-    <header className="text-black w-full">
+    <header className="text-black w-full   bg-[#F5F5F7]">
       <div className="flex w-full justify-center items-center">
         <div className="flex flex-col   w-full  border-[#155DFC]">
           {/* LEFT: Headline */}
-          <div className=" w-full  p-10 border-r border-[#155DFC] flex justify-center items-center">
+          {/* <div className=" w-full  p-10 border-r border-[#155DFC] flex justify-center items-center">
             <motion.h1
               style={{ fontFamily: "InstrumentSerif" }}
               className=" text-[23px]  lg:text-7xl  lg:max-w-4xl leading-tight   text-center "
@@ -108,7 +108,7 @@ export default function Hero1() {
                 </motion.span>
               ))}
             </motion.h1>
-          </div>
+          </div> */}
 
           {/* RIGHT: Description + CTA */}
           <div className="w-full flex justify-center items-center  ">
@@ -127,7 +127,7 @@ export default function Hero1() {
             </motion.p> */}
 
             {/* CTA */}
-            <motion.div
+            {/* <motion.div
               variants={buttonVariant}
               initial="hidden"
               animate="visible"
@@ -140,17 +140,17 @@ export default function Hero1() {
                 className="relative z-20 w-full  lg:px-6 py-4 text-xl lg:text-2xl mb-2 font-medium  text-white bg-[#004BF6]   border border-[#004BF6]  overflow-hidden flex justify-center items-center cursor-pointer hover:text-white  rounded-full"
               >
                 {/* Text */}
-                <span className="relative z-20">Contact  to Medika</span>
+                {/* <span className="relative z-20">Contact  to Medika</span> */} 
 
                 {/* Liquid fill background */}
-                <motion.div
+                {/* <motion.div
                   initial={{ width: "0%" }}
                   animate={fillControls}
                   className="absolute left-0 top-0 h-full "
                   style={{ backgroundColor: "#004BF6", zIndex: 10 }}
                 />
               </motion.button>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function Hero1() {
         className=" flex justify-center"
       >
         <div className="relative w-[98vw] lg:w-[95vw]  overflow-hidden rounded-2xl  ">
-          <FullCardCarousel />
+          {/* <FullCardCarousel /> */}
         </div>
       </motion.div>
     </header>

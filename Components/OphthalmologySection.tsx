@@ -31,64 +31,64 @@ type Category = {
 
 const categories: Category[] = [
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Restoratives_U9r3Zad.png?tr=q-60,f-avif",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/asf-plain-mirror-retinoscope-14_08_2025-d0bbaeec.png?tr=w-150,q-60,f-avif",
     bg: "bg-[#B2EBF2]",
     test: "25-Hydroxy Vitamin D Total Test (Bone & Joint Health)",
     price: 1099,
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/800de06d23a945579_image.png?tr=w-150,q-60,f-avif  ",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/6eb6941012954421a_image.png?tr=w-150,q-60,f-avif ",
     bg: "bg-[#FFF59D]",
     test: "BhCG Beta HCG / Blood Pregnancy Hormone Test - Serum",
     price: 899,
     originalPrice: 1200,
     discount: "25%",
     reportsIn: "24 Hours",
-    size: "w-[145px] h-auto ml-10",
+    size: "w-[145px] h-auto ",
   },
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/da95f5c4e0e4480e9_csm_c-000.32.430-heine-binocularloupes-hrp3.5x-additional_7358d4dbb4.webp?tr=w-150,q-60,f-avif",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/asf-ophthalmic-eye-shield-13_08_2025-5bc34f12.png?tr=w-150,q-60,f-avif",
     bg: "bg-[#FFCCBC]",
     test: "Glucose - Random / RBS Random Blood Sugar",
     price: 1299,
     originalPrice: 1600,
     discount: "19%",
     reportsIn: "18 Hours",
-    size: "w-[250px] h-auto ml-20",
+    size: "w-[250px] h-auto ",
   },
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/24c32e9742a843d2b_uni2.png?tr=w-126,q-60,f-avif",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/9a1547e6359c4e58a_90d-ophthalmology-lens-sugra-original-imahygcfumhdcw2g.webp?tr=w-150,q-60,f-avif",
     bg: "bg-[#F8BBD0]",
     test: "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
     price: 999,
     originalPrice: 1400,
     discount: "28%",
     reportsIn: "15 Hours",
-    size: "w-[220px] h-auto mt-20",
+    size: "w-[220px] h-auto",
   },
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/070b83cc77bf4eaaa_image.png?tr=w-126,q-60,f-avif",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/ad4a81f37b8f4ecca_autoref.jpg?tr=w-150,q-60,f-avif",
     bg: "bg-[#BBDEFB]",
     test: "Folate Serum / Folic Acid / Vitamin B9",
     price: 1599,
     originalPrice: 2000,
     discount: "20%",
     reportsIn: "20 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
   {
-    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Small_Equipment.png?tr=q-60,f-avif",
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/39e8f3141f8a46119_ishihara.PNG?tr=w-150,q-60,f-avif",
     bg: "bg-[#FFE082]",
     test: "Ferritin Serum",
     price: 699,
     originalPrice: 1000,
     discount: "30%",
     reportsIn: "8 Hours",
-    size: "w-[250px] h-auto ml-30 mt-10",
+    size: "w-[250px] h-auto ",
   },
 ];
 
@@ -99,16 +99,16 @@ export default function OphthalmologySection(): React.ReactElement {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
+    <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
       <h2
        
-        className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black"
+        className="text-start  text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold"
       >
-      <span className="">  Popular Ophthalmology</span> <span  style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}   className="text-[#155DFC]">• Equipment</span>
+      <span className="">Popular Ophthalmology.</span> <span     className="text-[#6E6E73]">  Equipment</span>
       </h2>
 
       
-            <div className="relative">
+            <div className="relative ml-12">
               <Swiper
                 modules={[Navigation]}
                 onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
@@ -116,15 +116,15 @@ export default function OphthalmologySection(): React.ReactElement {
                   0: { slidesPerView: 1.2, spaceBetween: 12 }, // mobile
                   640: { slidesPerView: 2, spaceBetween: 16 }, // tablets
                   1024: { slidesPerView: 3, spaceBetween: 20 }, // laptops
-                  1280: { slidesPerView: 4, spaceBetween: 20 }, // desktops
+                  1280: { slidesPerView: 4.5, spaceBetween: 10 }, // desktops
                 }}
                 navigation={false}
                 loop={false}
-                className="w-[95vw] sm:w-[93vw] h-[63vh]"
+                className="w-[98vw]  h-[61vh] bg-[#BBDEFB] rounded-4xl"
               >
                 {extendedCategories.map((cat, idx) => (
                   <SwiperSlide key={idx}>
-                    <div className="w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+                    <div className=" ml-5 w-full max-w-[350px] h-[460px] bg-white mt-5  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                       {cat.viewAll ? (
                         <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
                           <h2 className="text-lg sm:text-xl font-semibold mb-4">
@@ -148,9 +148,7 @@ export default function OphthalmologySection(): React.ReactElement {
                             )}
                   
                               <p className="absolute top-2 left-2 flex items-center  duration-300">
-                                                 <div className=" flex justify-center items-center ">
-                          <img className="w-12 h-12" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR4q66dy4ndP_c7oFetKJmMDWurcVnDoFChA&s" alt="" />
-                        </div>
+                     
                               </p>
                           
                       
@@ -212,21 +210,7 @@ export default function OphthalmologySection(): React.ReactElement {
                 ))}
               </Swiper>
       
-              {/* Prev Button */}
-              <button
-                onClick={() => swiperRef.current?.slidePrev()}
-                className="absolute top-1/2 -translate-y-1/2 left-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-              >
-                <FiArrowLeft size={20} />
-              </button>
-      
-              {/* Next Button */}
-              <button
-                onClick={() => swiperRef.current?.slideNext()}
-                className="absolute top-1/2 -translate-y-1/2 right-2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center  bg-white shadow-md hover:shadow-lg text-[#155DFC] transition duration-300 border border-[#155DFC]"
-              >
-                <FiArrowRight size={20} />
-              </button>
+    
             </div>
     </div>
   );

@@ -102,7 +102,7 @@ export default function PharmaceuticalSection(): React.ReactElement {
     <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
       <h2
        
-        className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black"
+        className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black"
       >
       <span className="">  Popular Pharmaceutical</span> <span  style={{ fontFamily: "Neuehaasgrotdisp46lightitalic" }}   className="text-[#155DFC]">• Equipment</span>
       </h2>

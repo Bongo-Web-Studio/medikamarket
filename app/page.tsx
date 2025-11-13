@@ -14,12 +14,13 @@ import OphthalmologySection from "@/Components/OphthalmologySection";
 import PharmaceuticalSection from "@/Components/PharmaceuticalSection";
 import PhysiotherapySection from "@/Components/PhysiotherapySection";
 import RefurbishedSection from "@/Components/RefurbishedSection";
+import VaccinesSection from "@/Components/VaccinesSection";
 
 
 
 export default function Home() {
   return (
-<div className="w-full h-full overflow-hidden">
+<div className="w-full h-full  relative bg-[#F5F5F7]">
 
      <NavbarAmazonClone />
   
@@ -43,9 +44,10 @@ export default function Home() {
 <OphthalmologySection/>
 <NephrologySection/>
 <PhysiotherapySection/>
-<RefurbishedSection/>
+{/* <RefurbishedSection/>
 <ObgynivfSection/>
 <PharmaceuticalSection/>
+<VaccinesSection/> */}
 
 <New4/>
 <New5/>

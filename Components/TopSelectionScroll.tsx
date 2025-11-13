@@ -3,101 +3,60 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * NavScroller (Client Component) - fixed
+ * 🍏 Apple-like Horizontal Scroll Navbar
+ * - Smooth scroll & drag
+ * - Subtle glassmorphism design
+ * - Refined macOS-inspired typography
  */
 export default function TopSelectionScroll() {
   const navItems = [
-    "Trending",
-    "Breaking",
-    "New",
-    "Politics",
-    "Sports",
-    "Finance",
-    "Crypto",
-    "Geopolitics",
-    "Earnings",
-    "Tech",
-    "Culture",
-    "World",
-    "Economy",
-    "Elections",
-    "Mentions",
-    "More",
-    "Trump",
-    "Gov Shutdown",
-    "NYC Mayor",
-    "Dutch Election",
-    "MegaETH",
-    "World Series",
-    "China",
-    "Venezuela",
-    "Gaza",
-    "Global Elections",
-    "Ukraine",
-    "Epstein",
-    "Israel",
-    "Fed",
-    "France",
-    "Taylor Swift",
-    "TikTok",
-    "Trade War",
-    "AI",
-    "Parlays",
-    "Fed Rates",
-    "H-1B",
-    "Earn 4%",
-    "US Election",
-    "Crypto Prices",
-    "Bitcoin",
-    "Weather",
-    "Movies",
+    "Dental",
+    "Diagnostics",
+    "Free",
+    "Consumables",
+    "10 off",
+    "Equipment",
+    "Ophthalmology",
+    "Nephrology",
+    "30 off",
+    "Physiotherapy",
+    "Refurbished",
+    "50 Off",
+    "Vaccines",
+    "IVF/Gynae",
+    "70 Off",
+    "Pharma",
   ];
 
   const scrollerRef = useRef<HTMLDivElement | null>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const [scrollingDirection, setScrollingDirection] = useState<"left" | "right" | null>(null);
+  const [scrollingDirection, setScrollingDirection] = useState<
+    "left" | "right" | null
+  >(null);
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const scrollStartX = useRef(0);
   const scrollingTimer = useRef<number | null>(null);
-
-  const updateScrollArrows = () => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 2);
-    setCanScrollRight(el.scrollWidth - el.clientWidth - el.scrollLeft > 2);
-  };
 
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
 
     const onWheel = (e: WheelEvent) => {
-      // hijack vertical wheel to horizontal scroll unless Shift is pressed
       if (!e.shiftKey) {
         e.preventDefault();
         const delta = e.deltaY || e.deltaX;
         el.scrollLeft += delta;
         setScrollingDirection(delta > 0 ? "right" : "left");
-        updateScrollArrows();
-
         if (scrollingTimer.current) window.clearTimeout(scrollingTimer.current);
-        scrollingTimer.current = window.setTimeout(() => setScrollingDirection(null), 200);
+        scrollingTimer.current = window.setTimeout(
+          () => setScrollingDirection(null),
+          200
+        );
       }
     };
 
-    const onScroll = () => updateScrollArrows();
-
     el.addEventListener("wheel", onWheel, { passive: false });
-    el.addEventListener("scroll", onScroll, { passive: true });
-    updateScrollArrows();
-
-    return () => {
-      el.removeEventListener("wheel", onWheel);
-      el.removeEventListener("scroll", onScroll);
-      if (scrollingTimer.current) window.clearTimeout(scrollingTimer.current);
-    };
+    return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
   // Drag behavior
@@ -119,12 +78,12 @@ export default function TopSelectionScroll() {
       if (!isDragging.current) return;
       const dx = e.clientX - dragStartX.current;
       el.scrollLeft = scrollStartX.current - dx;
-      // dx > 0 means pointer moved right: content moves left — choose naming that fits your UX
       setScrollingDirection(dx > 0 ? "left" : "right");
-      updateScrollArrows();
-
       if (scrollingTimer.current) window.clearTimeout(scrollingTimer.current);
-      scrollingTimer.current = window.setTimeout(() => setScrollingDirection(null), 200);
+      scrollingTimer.current = window.setTimeout(
+        () => setScrollingDirection(null),
+        200
+      );
     };
 
     const onPointerUp = (e: PointerEvent) => {
@@ -148,71 +107,48 @@ export default function TopSelectionScroll() {
   }, []);
 
   return (
-    <div className="relative flex items-end justify-start h-[1.2cm] w-full overflow-hidden  bg-[#004BF6]">
-      {/* Left Indicator */}
-      <div
-        aria-hidden
-        className={`absolute left-0 top-[-18px] bottom-0 w-10 flex items-center justify-center pointer-events-none transition-opacity duration-200 ${
-          canScrollLeft ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div
-          className={`bg-white px-1 py-0.5 flex items-center justify-center transform transition-transform ${
-            scrollingDirection === "left" ? "-translate-x-1" : ""
-          }`}
-        >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Right Indicator */}
-      <div
-        aria-hidden
-        className={`absolute right-0 top-[-18px] bottom-0 w-10 flex items-center justify-center pointer-events-none transition-opacity duration-200 ${
-          canScrollRight ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div
-          className={`bg-white px-1 py-0.5 flex items-center justify-center transform transition-transform ${
-            scrollingDirection === "right" ? "translate-x-1" : ""
-          }`}
-        >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6" />
-          </svg>
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Scrollable Nav Items */}
+    <div
+      className="
+        relative w-full h-[1.2cm] 
+        flex items-center justify-center 
+        backdrop-blur-xl bg-[#F5F5F7] 
+      
+        shadow-[inset_0_-0.5px_0_rgba(255,255,255,0.1)]
+        sticky top-0 z-50
+      "
+    >
+      {/* Scrollable Nav */}
       <div
         ref={scrollerRef}
-        className="overflow-x-auto h-full w-full scrollbar-hide"
+        className="overflow-x-auto w-full h-full flex items-center scrollbar-hide select-none"
         style={{
           cursor: "grab",
           WebkitOverflowScrolling: "touch",
           msOverflowStyle: "none",
           scrollbarWidth: "none",
-          touchAction: "pan-y", // allow vertical page scroll while enabling horizontal drag
+          touchAction: "pan-y",
         }}
       >
-        <ul className="flex h-full items-stretch whitespace-nowrap gap-2">
+        <ul className="flex h-full items-center gap-3 px-3 whitespace-nowrap">
           {navItems.map((text, i) => (
-            <li key={`${text}-${i}`} className="flex items-stretch  ">
+            <li key={`${text}-${i}`}>
               <button
                 type="button"
-                className="w-full h-full flex items-center px-2 uppercase tracking-widest text-sm  font-sans transition-all text-white duration-200 hover:bg-[#004BF6] hover:text-white"
-                aria-label={text.toLowerCase()}
-                style={{ letterSpacing: "0.18em" }}
+                className=" hover:bg-neutral-800 hover:text-white
+                  px-4 py-1.5 
+                  text-[13px] font-medium 
+                  text-neutral-800 
+                  rounded-full 
+                  bg-white
+                  backdrop-blur-md 
+                  border border-neutral-800
+                  shadow-[0_1px_2px_rgba(0,0,0,0.08)] 
+                  
+                  hover:scale-[1.05] active:scale-[0.98] 
+                  transition-all duration-300
+                "
               >
-                <span className="">{text}</span>
+                {text}
               </button>
             </li>
           ))}

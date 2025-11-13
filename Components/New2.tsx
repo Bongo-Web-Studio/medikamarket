@@ -70,7 +70,7 @@ export default function CategoryCarousel({
 
   return (
     <div className={`relative mx-auto py-10 bg-white select-none border-t border-gray-200 ${className}`}>
-      <h2 className="text-start text-4xl mb-6 px-4 lg:ml-10 text-black">
+      <h2 className="text-start text-2xl lg:text-4xl mb-6 px-4 lg:ml-10 text-black">
         <span>{title}</span>{" "}
         <span style={highlightStyle} className={highlightClassName}>
           {highlight}
