@@ -1,26 +1,94 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    font-family: "Neuehaasgrotdisp55roman", sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* @font-face {
+  font-family: "GondensDEMO";
+  src: url(../public/Fonts/GondensDEMO.otf)
+}
+@font-face {
+  font-family: "LarkenDEMORegular";
+  src: url(../Fonts/LarkenDEMO-Regular.otf);
+}
+@font-face {
+  font-family: "DynaPuff";
+  src: url(../Fonts/LilitaOne-Regular.ttf);
+}
+@font-face {
+  font-family: "Anton";
+  src: url(../public/Fonts/Anton-Regular.ttf);
+} */
+@font-face {
+  font-family: "Neuehaasgrotdisp46lightitalic";
+  src: url(../public/Fonts/neuehaasgrotdisp-46lightitalic-trial.otf);
+}
+@font-face {
+  font-family: "Neuehaasgrotdisp55roman";
+  src: url(../public/Fonts/neuehaasgrotdisp-55roman-trial.otf);
+}
+/* === Marquee Animation === */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  --marquee-duration: 35s;
+  --marquee-gap: 2rem;
+}
+
+.marquee-track {
+  display: flex;
+  gap: var(--marquee-gap);
+  align-items: stretch;
+  animation: marquee var(--marquee-duration) linear infinite;
+  will-change: transform;
+}
+
+/* Each card width */
+.marquee-item {
+  flex: 0 0 85vw; /* Mobile default */
+  min-width: 260px;
+  max-width: 520px;
+  box-sizing: border-box;
+}
+
+/* Larger devices */
+@media (min-width: 640px) {
+  .marquee-item {
+    flex: 0 0 60vw;
+  }
+}
+@media (min-width: 768px) {
+  .marquee-item {
+    flex: 0 0 45vw;
+  }
+}
+@media (min-width: 1024px) {
+  .marquee-item {
+    flex: 0 0 500px;
+  }
+}
+
+/* Animation keyframes */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

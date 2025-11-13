@@ -1,0 +1,136 @@
+import { Category } from "@/Components/New2";
+
+
+/* ---------------- PHYSIOTHERAPY ---------------- */
+export const physiotherapyData: Category[] = [
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Restoratives_U9r3Zad.png?tr=q-60,f-avif",
+    bg: "bg-[#B2EBF2]",
+    test: "25-Hydroxy Vitamin D Total Test (Bone & Joint Health)",
+    price: 1099,
+    originalPrice: 1400,
+    discount: "22%",
+    reportsIn: "12 Hours",
+    size: "w-[250px] h-auto ml-30 mt-10",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/800de06d23a945579_image.png?tr=w-150,q-60,f-avif",
+    bg: "bg-[#FFF59D]",
+    test: "BhCG Beta HCG / Blood Pregnancy Hormone Test - Serum",
+    price: 899,
+    originalPrice: 1200,
+    discount: "25%",
+    reportsIn: "24 Hours",
+    size: "w-[145px] h-auto ml-10",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/da95f5c4e0e4480e9_csm_c-000.32.430-heine-binocularloupes-hrp3.5x-additional_7358d4dbb4.webp?tr=w-150,q-60,f-avif",
+    bg: "bg-[#FFCCBC]",
+    test: "Glucose - Random / RBS Random Blood Sugar",
+    price: 1299,
+    originalPrice: 1600,
+    discount: "19%",
+    reportsIn: "18 Hours",
+    size: "w-[250px] h-auto ml-20",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/24c32e9742a843d2b_uni2.png?tr=w-126,q-60,f-avif",
+    bg: "bg-[#F8BBD0]",
+    test: "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
+    price: 999,
+    originalPrice: 1400,
+    discount: "28%",
+    reportsIn: "15 Hours",
+    size: "w-[220px] h-auto mt-20",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/070b83cc77bf4eaaa_image.png?tr=w-126,q-60,f-avif",
+    bg: "bg-[#BBDEFB]",
+    test: "Folate Serum / Folic Acid / Vitamin B9",
+    price: 1599,
+    originalPrice: 2000,
+    discount: "20%",
+    reportsIn: "20 Hours",
+    size: "w-[250px] h-auto ml-30 mt-10",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Small_Equipment.png?tr=q-60,f-avif",
+    bg: "bg-[#FFE082]",
+    test: "Ferritin Serum",
+    price: 699,
+    originalPrice: 1000,
+    discount: "30%",
+    reportsIn: "8 Hours",
+    size: "w-[250px] h-auto ml-30 mt-10",
+  },
+];
+
+/* ---------------- DENTAL ---------------- */
+export const dentalData: Category[] = [
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Dental_Chair.png?tr=q-60,f-avif",
+    bg: "bg-[#E1BEE7]",
+    test: "Dental X-Ray (Full Mouth OPG Scan)",
+    price: 499,
+    originalPrice: 800,
+    discount: "38%",
+    reportsIn: "6 Hours",
+    size: "w-[220px] h-auto mt-12",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Dental_Implant.png?tr=q-60,f-avif",
+    bg: "bg-[#C8E6C9]",
+    test: "Dental Implant Evaluation Test",
+    price: 1499,
+    originalPrice: 1800,
+    discount: "17%",
+    reportsIn: "10 Hours",
+    size: "w-[200px] h-auto mt-10",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Dental_Toolkit.png?tr=q-60,f-avif",
+    bg: "bg-[#FFECB3]",
+    test: "Oral Hygiene Kit (Professional Cleaning Tools)",
+    price: 699,
+    originalPrice: 950,
+    discount: "26%",
+    reportsIn: "4 Hours",
+    size: "w-[230px] h-auto mt-8",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Teeth_Model.png?tr=q-60,f-avif",
+    bg: "bg-[#B3E5FC]",
+    test: "Dental Scaling & Polishing Set",
+    price: 899,
+    originalPrice: 1200,
+    discount: "25%",
+    reportsIn: "12 Hours",
+    size: "w-[240px] h-auto mt-12",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Dental_Laser.png?tr=q-60,f-avif",
+    bg: "bg-[#FFCDD2]",
+    test: "Laser Cavity Detection Kit",
+    price: 1799,
+    originalPrice: 2100,
+    discount: "14%",
+    reportsIn: "16 Hours",
+    size: "w-[210px] h-auto mt-10",
+  },
+  {
+    image: "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Dental_XRay_Device.png?tr=q-60,f-avif",
+    bg: "bg-[#D1C4E9]",
+    test: "Portable Dental X-Ray Device",
+    price: 3599,
+    originalPrice: 4200,
+    discount: "14%",
+    reportsIn: "24 Hours",
+    size: "w-[240px] h-auto mt-12",
+  },
+];
+
+/* ---------------- EXPORT ALL ---------------- */
+export default {
+  physiotherapyData,
+  dentalData,
+};
