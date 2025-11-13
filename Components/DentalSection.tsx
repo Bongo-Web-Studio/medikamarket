@@ -133,7 +133,7 @@ export default function DentalSection(): React.ReactElement {
           }}
           navigation={false}
           loop={false}
-          className="w-[97vw] h-[66vh] bg-[#B2EBF2] rounded-4xl"
+          className="w-[98vw] h-[68vh] bg-[#B2EBF2] rounded-4xl"
         >
           {extendedCategories.map((cat, idx) => (
             <SwiperSlide key={idx}>

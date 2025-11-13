@@ -129,7 +129,7 @@ export default function DiagnosticsSection(): React.ReactElement {
               }}
               navigation={false}
               loop={false}
-              className="w-[98vw] h-[66vh] bg-[#FFF59D] rounded-4xl"
+              className="w-[98vw] h-[68vh] bg-[#FFF59D] rounded-4xl"
             >
               {extendedCategories.map((cat, idx) => (
                 <SwiperSlide key={idx}>

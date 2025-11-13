@@ -120,7 +120,7 @@ export default function OphthalmologySection(): React.ReactElement {
                 }}
                 navigation={false}
                 loop={false}
-                className="w-[98vw]  h-[66vh] bg-[#BBDEFB] rounded-4xl"
+                className="w-[98vw]  h-[68vh] bg-[#BBDEFB] rounded-4xl"
               >
                 {extendedCategories.map((cat, idx) => (
                   <SwiperSlide key={idx}>

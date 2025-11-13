@@ -120,7 +120,7 @@ export default function MedicalequipmentsSection(): React.ReactElement {
               }}
               navigation={false}
               loop={false}
-              className="w-[98vw] rounded-4xl bg-[#F8BBD0] h-[66vh]"
+              className="w-[98vw] rounded-4xl bg-[#F8BBD0] h-[68vh]"
             >
               {extendedCategories.map((cat, idx) => (
                 <SwiperSlide key={idx}>
