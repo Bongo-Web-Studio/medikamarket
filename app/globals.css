@@ -28,13 +28,12 @@
 @font-face {
   font-family: "Neuehaasgrotdisp55roman";
   src: url(../public/Fonts/neuehaasgrotdisp-55roman-trial.otf);
-}
-/* === Marquee Animation === */
+}/* === Marquee Animation === */
 .marquee {
   width: 100%;
   overflow: hidden;
   position: relative;
-  --marquee-duration: 35s;
+  --marquee-duration: 35s; /* desktop default */
   --marquee-gap: 2rem;
 }
 
@@ -54,7 +53,32 @@
   box-sizing: border-box;
 }
 
-/* Larger devices */
+/* Responsive durations + widths */
+@media (max-width: 480px) {
+  .marquee {
+    --marquee-duration: 18s; /* Faster on small screens */
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .marquee {
+    --marquee-duration: 25s; /* Medium speed */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .marquee {
+    --marquee-duration: 30s;
+  }
+}
+
+@media (min-width: 1025px) {
+  .marquee {
+    --marquee-duration: 35s;
+  }
+}
+
+/* Adjust widths for better fit per device */
 @media (min-width: 640px) {
   .marquee-item {
     flex: 0 0 60vw;
