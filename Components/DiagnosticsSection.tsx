@@ -108,114 +108,103 @@ export default function DiagnosticsSection(): React.ReactElement {
     <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
       <h2 className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold">
         <span className=""> Popular Diagnostics.</span>{" "}
-        <span
-       
-          className="text-[#6E6E73]"
-        >
-           Equipment
-        </span>
+        <span className="text-[#6E6E73]">Equipment</span>
       </h2>
 
-    
-          <div className="relative ml-0  lg:ml-12">
-            <Swiper
-              modules={[Navigation]}
-              onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
-              breakpoints={{
-                0: { slidesPerView: 1.2, spaceBetween: 10 }, // mobile
-                640: { slidesPerView: 2, spaceBetween: 10 }, // tablets
-                1024: { slidesPerView: 3, spaceBetween: 10 }, // laptops
-                1280: { slidesPerView: 4.5, spaceBetween: 10 }, // desktops
-              }}
-              navigation={false}
-              loop={false}
-              className="w-[98vw] h-[68vh] bg-[#FFF59D] rounded-4xl"
-            >
-              {extendedCategories.map((cat, idx) => (
-                <SwiperSlide key={idx}>
-                  <div className=" ml-5 w-full max-w-[350px] mt-5 h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
-                    {cat.viewAll ? (
-                      <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
-                        <h2 className="text-lg sm:text-xl font-semibold mb-4">
-                          View All Tests
+      <div className="relative ml-0  lg:ml-12">
+        <Swiper
+          modules={[Navigation]}
+          onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
+          breakpoints={{
+            0: { slidesPerView: 1.2, spaceBetween: 10 }, // mobile
+            640: { slidesPerView: 2, spaceBetween: 10 }, // tablets
+            1024: { slidesPerView: 3, spaceBetween: 10 }, // laptops
+            1280: { slidesPerView: 4.5, spaceBetween: 10 }, // desktops
+          }}
+          navigation={false}
+          loop={false}
+          className="w-[98vw] h-[63vh] lg:h-[68vh] bg-[#FFF59D] rounded-4xl"
+        >
+          {extendedCategories.map((cat, idx) => (
+            <SwiperSlide key={idx}>
+              <div className=" ml-5 w-full max-w-[350px] mt-5 h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+                {cat.viewAll ? (
+                  <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-2xl">
+                    <h2 className="text-lg sm:text-xl font-semibold mb-4">
+                      View All Tests
+                    </h2>
+                    <button className="px-6 py-3 bg-[#155DFC] text-white  hover:opacity-90 transition">
+                      Explore
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    {/* Image Section */}
+                    <div
+                      className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
+                    >
+                      {cat.discount && (
+                        <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
+                          <FiTag size={14} /> {cat.discount} OFF
+                        </span>
+                      )}
+
+                      <p className="absolute top-2 left-2 flex items-center  duration-300"></p>
+
+                      {cat.image && (
+                        // Keep native <img/> for simplicity. If you're on Next.js consider switching to next/image for optimization.
+                        <img
+                          src={cat.image}
+                          alt={cat.test}
+                          className={`${cat.size} object-contain`}
+                        />
+                      )}
+                    </div>
+
+                    {/* Text Section */}
+                    <div
+                      className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-2xl `}
+                    >
+                      <div>
+                        <h2 className="text-base sm:text-lg font-medium text-gray-900 line-clamp-2 min-h-[56px]">
+                          {cat.test}
                         </h2>
-                        <button className="px-6 py-3 bg-[#155DFC] text-white  hover:opacity-90 transition">
-                          Explore
-                        </button>
-                      </div>
-                    ) : (
-                      <>
-    
-                        {/* Image Section */}
-                        <div
-                          className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-2xl`}
-                        >
-                          {cat.discount && (
-                            <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
-                              <FiTag size={14} /> {cat.discount} OFF
+                        <div className="mt-3 flex items-center justify-end gap-2">
+                          {cat.originalPrice && (
+                            <span className="text-gray-400 line-through text-sm sm:text-lg">
+                              ₹{cat.originalPrice}
                             </span>
                           )}
-                
-                            <p className="absolute top-2 left-2 flex items-center  duration-300">
-                  
-                            </p>
-                        
-                    
-                          {cat.image && (
-                            // Keep native <img/> for simplicity. If you're on Next.js consider switching to next/image for optimization.
-                            <img
-                              src={cat.image}
-                              alt={cat.test}
-                              className={`${cat.size} object-contain`}
-                            />
+                          {cat.price && (
+                            <span className="text-lg sm:text-2xl font-semibold text-gray-900">
+                              ₹{cat.price}
+                            </span>
                           )}
                         </div>
-    
-                        {/* Text Section */}
-                        <div className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-2xl `}>
-                          <div>
-                            <h2 className="text-base sm:text-lg font-medium text-gray-900 line-clamp-2 min-h-[56px]">
-                              {cat.test}
-                            </h2>
-                            <div className="mt-3 flex items-center justify-end gap-2">
-                              {cat.originalPrice && (
-                                <span className="text-gray-400 line-through text-sm sm:text-lg">
-                                  ₹{cat.originalPrice}
-                                </span>
-                              )}
-                              {cat.price && (
-                                <span className="text-lg sm:text-2xl font-semibold text-gray-900">
-                                  ₹{cat.price}
-                                </span>
-                              )}
-                            </div>
-                    
-                          </div>
-    
-                          <div className="mt-6 flex gap-3">
-                            <motion.button
-                              whileTap={{ scale: 0.95 }}
-                              className="w-full flex items-center justify-center gap-2  bg-white text-gray-700 py-2 border border-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-200 transition"
-                            >
-                              <FiInfo size={16} /> View Details
-                            </motion.button>
-                            <motion.button
-                              whileTap={{ scale: 0.95 }}
-                              className={`w-full flex items-center justify-center gap-2 bg-[#155DFC] text-white py-2  text-xs sm:text-sm font-medium hover:opacity-90 transition`}
-                            >
-                              <FiShoppingCart size={16} /> Add to Cart
-                            </motion.button>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-    
-    
-          </div>
+                      </div>
+
+                      <div className="mt-6 flex gap-3">
+                        <motion.button
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full flex items-center justify-center gap-2  bg-white text-gray-700 py-2 border border-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-200 transition"
+                        >
+                          <FiInfo size={16} /> View Details
+                        </motion.button>
+                        <motion.button
+                          whileTap={{ scale: 0.95 }}
+                          className={`w-full flex items-center justify-center gap-2 bg-[#155DFC] text-white py-2  text-xs sm:text-sm font-medium hover:opacity-90 transition`}
+                        >
+                          <FiShoppingCart size={16} /> Add to Cart
+                        </motion.button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }

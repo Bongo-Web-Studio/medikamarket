@@ -106,7 +106,7 @@ export default function NephrologySection(): React.ReactElement {
 
   return (
     <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
-      <h2 className="text-start text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold">
+      <h2 className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold">
         <span className=""> Popular Nephrology. </span>
         <span className="text-[#6E6E73]"> Equipment</span>
       </h2>
@@ -123,7 +123,7 @@ export default function NephrologySection(): React.ReactElement {
           }}
           navigation={false}
           loop={false}
-          className="w-[98vw]  h-[68vh] bg-[#FFE082] rounded-4xl "
+          className="w-[98vw]  h-[63vh] lg:h-[68vh] bg-[#FFE082] rounded-4xl "
         >
           {extendedCategories.map((cat, idx) => (
             <SwiperSlide key={idx}>
@@ -149,9 +149,7 @@ export default function NephrologySection(): React.ReactElement {
                         </span>
                       )}
 
-                      <p className="absolute top-2 left-2 flex items-center  duration-300">
-                
-                      </p>
+                      <p className="absolute top-2 left-2 flex items-center  duration-300"></p>
 
                       {cat.image && (
                         // Keep native <img/> for simplicity. If you're on Next.js consider switching to next/image for optimization.

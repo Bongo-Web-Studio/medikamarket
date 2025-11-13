@@ -99,7 +99,7 @@ export default function ObgynivfSection(): React.ReactElement {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200">
+    <div className="relative mx-auto py-10 bg-white select-none border-t border-gray-200 w-full h-full overflow-hiddenr">
       <h2
        
         className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black"
@@ -120,7 +120,7 @@ export default function ObgynivfSection(): React.ReactElement {
               }}
               navigation={false}
               loop={false}
-              className="w-[95vw] sm:w-[93vw] h-[63vh]"
+              className="w-[98vw] h-[63vh] lg:h-[68vh]"
             >
               {extendedCategories.map((cat, idx) => (
                 <SwiperSlide key={idx}>
