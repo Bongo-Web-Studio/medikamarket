@@ -121,7 +121,7 @@ export default function DentalSection(): React.ReactElement {
         <span className="text-[#6E6E73]">Equipment</span>
       </h2>
 
-      <div className="relative ml-12">
+      <div className="relative ml-0  lg:ml-12">
         <Swiper
           modules={[Navigation]}
           onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}

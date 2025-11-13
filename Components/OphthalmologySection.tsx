@@ -108,7 +108,7 @@ export default function OphthalmologySection(): React.ReactElement {
       </h2>
 
       
-            <div className="relative ml-12">
+            <div className="relative ml-0  lg:ml-12">
               <Swiper
                 modules={[Navigation]}
                 onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
