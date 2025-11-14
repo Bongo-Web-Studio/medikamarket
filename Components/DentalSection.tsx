@@ -138,7 +138,7 @@ export default function DentalSectionGrid(): React.ReactElement {
             {categories.map((cat, idx) => (
               <article
                 key={idx}
-                className=" w-[222px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative "
+                className=" w-[195px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative "
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
                 {/* image & heart */}
@@ -170,7 +170,7 @@ export default function DentalSectionGrid(): React.ReactElement {
                     {cat.title}
                   </h3>
 
-                  <div className="flex items-center justify-between">
+                  <div className="lg:flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Stars value={cat.rating ?? 0} />
                       <span className="text-xs text-gray-500">
@@ -178,7 +178,7 @@ export default function DentalSectionGrid(): React.ReactElement {
                       </span>
                     </div>
                     {cat.discount && (
-                      <div className="text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
+                      <div className="w-[4rem] text-[10px]  lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
                         {cat.discount} OFF
                       </div>
                     )}
