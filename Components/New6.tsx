@@ -146,7 +146,7 @@ const New6: React.FC = () => {
 
       <div className="relative  mx-auto px-6 py-24 md:py-10 text-center">
         {/* Heading */}
-        <h1 className="font-extrabold text-[2rem] md:text-[6.25rem] lg:text-[5rem] leading-[1] tracking-tight text-[#3b1016] drop-shadow-sm">
+        <h1 className="font-extrabold text-2xl md:text-[6.25rem] lg:text-[5rem] leading-[1] tracking-tight text-[#3b1016] drop-shadow-sm">
           <span className="block">Find the Medical Equipments </span>
           <span className="block">
             in best Affordable price
