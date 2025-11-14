@@ -10,7 +10,7 @@ import New1 from "@/Components/New1";
 import New4 from "@/Components/New4";
 import New5 from "@/Components/New5";
 import New6 from "@/Components/New6";
-import New7 from "@/Components/New7";
+
 import New8 from "@/Components/New8";
 import ObgynivfSection from "@/Components/ObgynivfSection";
 import OphthalmologySection from "@/Components/OphthalmologySection";
