@@ -42,7 +42,7 @@ const categories: Category[] = [
   },
   {
     image:
-      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/NewCategories/rapid-title-card-500x500.jpg?tr=q-60,f-avif",
+      "https://ik.imagekit.io/z6mqjyyzz/media/public/da95f5c4e0e4480e9_csm_c-000.32.430-heine-binocularloupes-hrp3.5x-additional_7358d4dbb4.webp?tr=w-150,q-60,f-avif",
     bg: "bg-[#FFCCBC]",
     title: "Glucose - Random / RBS Random Blood Sugar",
     price: 1299,
@@ -118,7 +118,7 @@ function Stars({ value = 0 }: { value: number }) {
   );
 }
 
-export default function DentalSectionGrid(): React.ReactElement {
+export default function DiagnosticsSection(): React.ReactElement {
   const addItem = useCartStore((state) => state.addItem);
 
   return (
@@ -126,7 +126,7 @@ export default function DentalSectionGrid(): React.ReactElement {
       <div className="px-4 lg:px-12">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg lg:text-2xl font-semibold text-gray-900">
-            Today's Best Deals For You!
+            Today's Best Deals For Diagnostic
           </h2>
           <button className="text-sm lg:text-base text-blue-600 font-medium hover:underline">
             View All
@@ -134,12 +134,12 @@ export default function DentalSectionGrid(): React.ReactElement {
         </div>
 
         {/* Product strip */}
-        <div className="w-full bg-white p-4">
-          <div className="flex gap-4 overflow-x-auto no-scrollbar py-3 px-2">
+        <div className="w-full bg-white">
+          <div className="flex  flex-wrap lg:flex-row gap-2 ">
             {categories.map((cat, idx) => (
               <article
                 key={idx}
-                className="flex-shrink-0 w-[220px] sm:w-[240px] md:w-[260px]  transition-all duration-200 overflow-hidden relative"
+                className="w-[222px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative"
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
                 {/* image & heart */}
@@ -214,7 +214,7 @@ export default function DentalSectionGrid(): React.ReactElement {
                       });
                     }}
                     className="mt-3 w-22  justify-center  text-sm font-medium hover:opacity-95 transition cursor-pointer relative flex items-center gap-2 px-3 py-2 bg-[#0077ED] 
-                border border-blue-600 rounded-2xl text-white ml-2
+                border border-blue-600 rounded-2xl text-white
                 shadow-inner shadow-white/40"
                     aria-label={`Add ${cat.title} to cart`}
                   >

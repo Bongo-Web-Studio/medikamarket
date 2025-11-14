@@ -45,11 +45,11 @@ export default function New8() {
         Explore Popular Brand Equipment
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className=" flex flex-wrap justify-center items-center    gap-2">
         {brands.map((b, idx) => (
           <article
             key={idx}
-            className="flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-lg transform hover:-translate-y-1 transition"
+            className="w-[5cm] lg:w-[6cm] flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-lg transform hover:-translate-y-1 transition"
             role="button"
             tabIndex={0}
             aria-label={`Open ${b.displayName || b.name} store`}
@@ -64,7 +64,7 @@ export default function New8() {
             </div>
 
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-sm lg:text-lg font-semibold text-gray-800">
                 {b.displayName || b.name}
               </h3>
             </div>

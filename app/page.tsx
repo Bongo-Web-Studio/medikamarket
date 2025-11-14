@@ -1,23 +1,15 @@
-import ConsumablesSection from "@/Components/ConsumablesSection";
 import DentalSection from "@/Components/DentalSection";
 import DiagnosticsSection from "@/Components/DiagnosticsSection";
 import Footer from "@/Components/Footer";
-import Hero1 from "@/Components/Hero1";
-import MedicalequipmentsSection from "@/Components/MedicalequipmentsSection";
+
 import NavbarAmazonClone from "@/Components/Navbar";
-import NephrologySection from "@/Components/NephrologySection";
+
 import New1 from "@/Components/New1";
 import New4 from "@/Components/New4";
 import New5 from "@/Components/New5";
 import New6 from "@/Components/New6";
 
 import New8 from "@/Components/New8";
-import ObgynivfSection from "@/Components/ObgynivfSection";
-import OphthalmologySection from "@/Components/OphthalmologySection";
-import PharmaceuticalSection from "@/Components/PharmaceuticalSection";
-import PhysiotherapySection from "@/Components/PhysiotherapySection";
-import RefurbishedSection from "@/Components/RefurbishedSection";
-import VaccinesSection from "@/Components/VaccinesSection";
 
 export default function Home() {
   const heroBackground = {
@@ -38,8 +30,6 @@ export default function Home() {
     <div className="w-full h-full  relative " style={heroBackground}>
       <NavbarAmazonClone />
 
-
-
       <New6 />
 
       <div className="bg-white overflow-hidden border-t-4 border-[#FDC89B] rounded-t-[70px] ">
@@ -49,14 +39,24 @@ export default function Home() {
 
         <DentalSection />
 
-
-        <div className="w-full flex justify-center items-center p-15 gap-6 overflow-hidden">
-
-          <img className="w-[33%]  h-[40vh] rounded-2xl" src="./banner3.jpg" alt="" />
-          <img className="w-[33%] h-[40vh] rounded-2xl" src="./banner2.jpg" alt="" />
-          <img className="w-[33%] h-[40vh]  rounded-2xl" src="./banner1.jpg" alt="" />
+        <div className=" hidden w-full lg:flex  justify-center items-center p-15 gap-6 overflow-hidden">
+          <img
+            className="w-full lg:w-[33%]  h-[40vh] rounded-2xl"
+            src="./banner3.jpg"
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] h-[40vh] rounded-2xl"
+            src="./banner2.jpg"
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] h-[40vh]  rounded-2xl"
+            src="./banner1.jpg"
+            alt=""
+          />
         </div>
-        <New8/>
+        <New8 />
 
         <DiagnosticsSection />
         {/* <ConsumablesSection />
