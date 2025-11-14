@@ -103,11 +103,6 @@ export default function New1(): React.ReactElement {
 
   return (
     <div className="relative w-full ">
-      {/* 🔥 Bottom Gradient Layer */}
-        {/* <div
-          className="absolute bottom-0 left-0 w-full h-[140px] pointer-events-none 
-        bg-gradient-to-t from-[#FFF7EB] via-[#FFF7EB]/60 to-white/0"
-        ></div> */}
 
       <div className="px-4 sm:px-8 md:px-20 py-10 sm:py-16 cursor-grab">
         <div className="w-full relative">
@@ -122,9 +117,9 @@ export default function New1(): React.ReactElement {
               features.map((item) => (
                 <SwiperSlide
                   key={item.id}
-                  className="max-w-[10rem]  flex-shrink-0 bg-[] "
+                  className="max-w-40 shrink-0"
                 >
-                  <div className="flex justify-center items-center flex-col    rounded-4xl p-5  transition-all duration-300  ">
+                  <div className="flex justify-center items-center flex-col rounded-4xl p-5  transition-all duration-300  ">
                     <div className="relative flex justify-center items-center bg-[#F5F5F7] rounded-full w-32 h-32 mb-4 p-4">
                       <img
                         src={item.img}

@@ -139,7 +139,7 @@ export default function DiagnosticsSection(): React.ReactElement {
             {categories.map((cat, idx) => (
               <article
                 key={idx}
-                className=" w-[170px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative"
+                className=" w-[176px] sm:w-[200px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative"
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
                 {/* image & heart */}
@@ -179,7 +179,7 @@ export default function DiagnosticsSection(): React.ReactElement {
                       </span>
                     </div>
                     {cat.discount && (
-                      <div className="w-[4rem] text-[10px] lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
+                      <div className="w-[4rem] lg:w-[5rem] text-[10px]  lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
                         {cat.discount} OFF
                       </div>
                     )}

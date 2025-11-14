@@ -1,77 +1,83 @@
-import DentalSection from "@/Components/DentalSection";
+"use client";
+
+import React from "react";
+
 import DiagnosticsSection from "@/Components/DiagnosticsSection";
 import Footer from "@/Components/Footer";
-
 import NavbarAmazonClone from "@/Components/Navbar";
-
 import New1 from "@/Components/New1";
 import New4 from "@/Components/New4";
 import New5 from "@/Components/New5";
 import New6 from "@/Components/New6";
-
 import New8 from "@/Components/New8";
+import DentalSectionGrid from "@/Components/DentalSection";
 
 export default function Home() {
   const heroBackground = {
     backgroundImage: [
-      // subtle horizontal sweep: left cream -> warm yellow center -> pink right
       "linear-gradient(90deg, #fff 0%, #fff7ec 8%, #fff2c9 35%, #ffe299 52%, #ffd7b8 66%, #ffeef4 86%, #fff 100%)",
-      // warm radial glow near bottom-center to mimic the yellow pick glow in the screenshot
+
       "radial-gradient(circle at 50% 78%, rgba(255,196,71,0.22) 0%, rgba(255,196,71,0.14) 10%, rgba(255,196,71,0.06) 22%, transparent 40%)",
-      // faint pink wash on the right edge for the soft pink vertical band
+
       "linear-gradient(90deg, transparent 70%, rgba(255,222,231,0.65) 100%)",
-      // subtle vignette to tie edges together
+
       "radial-gradient(ellipse at 10% 50%, rgba(0,0,0,0.02) 0%, transparent 20%), radial-gradient(ellipse at 90% 50%, rgba(0,0,0,0.02) 0%, transparent 20%)",
     ].join(", "),
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   } as React.CSSProperties;
+
+  const banners = [
+    {
+      src: "./banner3.jpg",
+      alt: "Medical banner 3",
+    },
+    { src: "./banner2.jpg", alt: "Medical banner 2" },
+    { src: "./banner1.jpg", alt: "Medical banner 1" },
+  ];
+
   return (
-    <div className="w-full h-full  relative " style={heroBackground}>
+    <div className="w-full min-h-screen relative" style={heroBackground}>
       <NavbarAmazonClone />
 
       <New6 />
 
-      <div className="bg-white overflow-hidden border-t-4 border-[#FDC89B] rounded-t-[70px] ">
-        <New1 />
+      <main className="bg-white overflow-hidden border-t-4 border-[#FDC89B] rounded-t-[28px] md:rounded-t-[40px] lg:rounded-t-[70px] mt-6">
+        <div className="">
+          <New1 />
+          <DentalSectionGrid />
 
-        {/* <New3/> */}
+          {/* Responsive banners: stack on small screens, row on large */}
+          <section className=" hidden w-full lg:flex flex-col lg:flex-row items-center justify-center gap-6 py-6">
+            {banners.map((b, idx) => (
+              <div
+                key={b.src + idx}
+                className="w-full lg:w-1/3 shrink-0 rounded-2xl overflow-hidden shadow-sm"
+              >
+                <img
+                  src={b.src}
+                  alt={b.alt}
+                  className="w-full h-40 sm:h-56 md:h-72 lg:h-[40vh] object-cover block"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </section>
 
-        <DentalSection />
+          <New8 />
 
-        <div className=" hidden w-full lg:flex  justify-center items-center p-15 gap-6 overflow-hidden">
-          <img
-            className="w-full lg:w-[33%]  h-[40vh] rounded-2xl"
-            src="./banner3.jpg"
-            alt=""
-          />
-          <img
-            className="w-full lg:w-[33%] h-[40vh] rounded-2xl"
-            src="./banner2.jpg"
-            alt=""
-          />
-          <img
-            className="w-full lg:w-[33%] h-[40vh]  rounded-2xl"
-            src="./banner1.jpg"
-            alt=""
-          />
+          <DiagnosticsSection />
+
+          <div className="py-6">
+            <New4 />
+          </div>
+
+          <div className="py-6">
+            <New5 />
+          </div>
         </div>
-        <New8 />
+      </main>
 
-        <DiagnosticsSection />
-        {/* <ConsumablesSection />
-        <MedicalequipmentsSection />
-        <OphthalmologySection />
-        <NephrologySection />
-        <PhysiotherapySection /> */}
-        {/* <RefurbishedSection/>
-<ObgynivfSection/>
-<PharmaceuticalSection/>
-<VaccinesSection/> */}
-
-        <New4 />
-        <New5 />
-      </div>
       <Footer />
     </div>
   );
