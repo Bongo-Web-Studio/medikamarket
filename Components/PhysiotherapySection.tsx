@@ -120,11 +120,11 @@ export default function PhysiotherapySection(): React.ReactElement {
              }}
              navigation={false}
              loop={false}
-             className="w-[98vw]  h-[63vh] lg:h-[68vh] bg-[#B2EBF2] rounded-4xl"
+             className="w-[98vw]  bg-[#B2EBF2] rounded-4xl"
            >
              {extendedCategories.map((cat, idx) => (
                <SwiperSlide key={idx}>
-                 <div className="ml-5 mt-5 w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
+                 <div className="ml-5 mb-5 mt-5 w-full max-w-[350px] h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
                    {cat.viewAll ? (
                      <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-3xl">
                        <h2 className="text-lg sm:text-xl font-semibold mb-4">

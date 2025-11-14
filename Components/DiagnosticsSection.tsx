@@ -1,32 +1,20 @@
 "use client";
-
-import React, { useRef } from "react";
-import {
-  FiShoppingCart,
-  FiInfo,
-  FiClock,
-  FiTag,
-  FiArrowLeft,
-  FiArrowRight,
-} from "react-icons/fi";
+import React from "react";
+import { FiShoppingCart, FiTag, FiHeart } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperClass } from "swiper";
-import { Navigation } from "swiper/modules"; // If your Swiper version doesn't expose this path, try 'swiper' or 'swiper/modules'.
-
-import "swiper/css";
-import "swiper/css/navigation";
+import { useCartStore } from "@/store/cartStore/cartStore";
+import { FaShoppingCart } from "react-icons/fa";
 
 type Category = {
   image?: string;
   bg?: string;
-  test?: string;
+  title?: string;
   price?: number;
   originalPrice?: number;
   discount?: string;
+  rating?: number; // 0-5
+  reviews?: number;
   reportsIn?: string;
-  size?: string;
-  viewAll?: boolean;
 };
 
 const categories: Category[] = [
@@ -34,177 +22,210 @@ const categories: Category[] = [
     image:
       "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Frame_1237.png?tr=q-60,f-avif",
     bg: "bg-[#B2EBF2]",
-    test: "25-Hydroxy Vitamin D Total Test (Bone & Joint Health)",
+    title: "25-Hydroxy Vitamin D Total Test (Bone & Joint Health)",
     price: 1099,
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-    size: "w-[250px] h-auto ",
+
   },
   {
     image:
       "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/Specialities/biochemistry.jpg?tr=q-60,f-avif  ",
     bg: "bg-[#FFF59D]",
-    test: "BhCG Beta HCG / Blood Pregnancy Hormone Test - Serum",
+    title: "BhCG Beta HCG / Blood Pregnancy Hormone Test - Serum",
     price: 899,
     originalPrice: 1200,
     discount: "25%",
     reportsIn: "24 Hours",
-    size: "w-[145px] h-auto",
+
   },
   {
     image:
-      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/NewCategories/rapid-test-card-500x500.jpg?tr=q-60,f-avif",
+      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/NewCategories/rapid-title-card-500x500.jpg?tr=q-60,f-avif",
     bg: "bg-[#FFCCBC]",
-    test: "Glucose - Random / RBS Random Blood Sugar",
+    title: "Glucose - Random / RBS Random Blood Sugar",
     price: 1299,
     originalPrice: 1600,
     discount: "19%",
     reportsIn: "18 Hours",
-    size: "w-[250px] h-auto",
+  
   },
   {
     image:
       "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Frame_1236.png?tr=q-60,f-avif",
     bg: "bg-[#F8BBD0]",
-    test: "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
+    title: "HBA1c Glycosylated Hemoglobin with eAG - HPLC Gold Standard Method",
     price: 999,
     originalPrice: 1400,
     discount: "28%",
     reportsIn: "15 Hours",
-    size: "w-[220px] h-auto ",
+
   },
   {
     image:
       "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/NewCategories/Diagnostic_test_kit.jpg?tr=q-60,f-avif",
     bg: "bg-[#BBDEFB]",
-    test: "Folate Serum / Folic Acid / Vitamin B9",
+    title: "Folate Serum / Folic Acid / Vitamin B9",
     price: 1599,
     originalPrice: 2000,
     discount: "20%",
     reportsIn: "20 Hours",
-    size: "w-[250px] h-auto ",
+  
   },
-  {
-    image:
-      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/POCT.jpg?tr=q-60,f-avif",
-    bg: "bg-[#FFE082]",
-    test: "Ferritin Serum",
-    price: 699,
-    originalPrice: 1000,
-    discount: "30%",
-    reportsIn: "8 Hours",
-    size: "w-[250px] h-auto ",
-  },
+ 
 ];
 
-// Add View All card
-const extendedCategories: Category[] = [...categories, { viewAll: true }];
+const slugify = (s = "") =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
 
-export default function DiagnosticsSection(): React.ReactElement {
-  const swiperRef = useRef<SwiperClass | null>(null);
+function Stars({ value = 0 }: { value: number }) {
+  const full = Math.floor(value);
+  const half = value - full >= 0.5;
+  const total = 5;
+  return (
+    <div className="flex items-center gap-1" aria-hidden>
+      {Array.from({ length: total }).map((_, i) => {
+        const idx = i + 1;
+        const fill = idx <= full ? 1 : idx === full + 1 && half ? 0.5 : 0;
+        return (
+          <svg
+            key={i}
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline-block"
+          >
+            <defs>
+              <linearGradient id={`g-${i}`}>
+                <stop offset={`${fill * 100}%`} stopColor="#F59E0B" />
+                <stop offset={`${fill * 100}%`} stopColor="#E5E7EB" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+              fill={`url(#g-${i})`}
+            />
+          </svg>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function DentalSectionGrid(): React.ReactElement {
+  const addItem = useCartStore((state) => state.addItem);
 
   return (
-    <div className="relative mx-auto py-10  select-none border-t border-gray-200 w-full h-full overflow-hidden">
-      <h2 className="text-start text-2xl lg:text-4xl  mb-6 px-4 lg:ml-10    text-black font-semibold">
-        <span className=""> Popular Diagnostics.</span>{" "}
-        <span className="text-[#6E6E73]">Equipment</span>
-      </h2>
+    <section className="relative mx-auto py-6 select-none w-full">
+      <div className="px-4 lg:px-12">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg lg:text-2xl font-semibold text-gray-900">
+            Today's Best Deals For You!
+          </h2>
+          <button className="text-sm lg:text-base text-blue-600 font-medium hover:underline">
+            View All
+          </button>
+        </div>
 
-      <div className="relative ml-0  lg:ml-12">
-        <Swiper
-          modules={[Navigation]}
-          onSwiper={(swiper) => (swiperRef.current = swiper as SwiperClass)}
-          breakpoints={{
-            0: { slidesPerView: 1.2, spaceBetween: 10 }, // mobile
-            640: { slidesPerView: 2, spaceBetween: 10 }, // tablets
-            1024: { slidesPerView: 3, spaceBetween: 10 }, // laptops
-            1280: { slidesPerView: 4.5, spaceBetween: 10 }, // desktops
-          }}
-          navigation={false}
-          loop={false}
-          className="w-[98vw] h-[63vh] lg:h-[68vh] bg-[#FFF59D] rounded-4xl"
-        >
-          {extendedCategories.map((cat, idx) => (
-            <SwiperSlide key={idx}>
-              <div className=" ml-5 w-full max-w-[350px] mt-5 h-[460px] bg-white  shadow-md rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col group justify-between mx-auto overflow-hidden">
-                {cat.viewAll ? (
-                  <div className="flex flex-col justify-center items-center h-full text-[#155DFC] bg-gray-100  border-[2px] border-dashed border-[#155DFC] rounded-3xl">
-                    <h2 className="text-lg sm:text-xl font-semibold mb-4">
-                      View All Tests
-                    </h2>
-                    <button className="px-6 py-3 bg-[#155DFC] text-white  hover:opacity-90 transition">
-                      Explore
+        {/* Product strip */}
+        <div className="w-full bg-white p-4">
+          <div className="flex gap-4 overflow-x-auto no-scrollbar py-3 px-2">
+            {categories.map((cat, idx) => (
+              <article
+                key={idx}
+                className="flex-shrink-0 w-[220px] sm:w-[240px] md:w-[260px]  transition-all duration-200 overflow-hidden relative"
+                aria-labelledby={slugify(cat.title || `item-${idx}`)}
+              >
+                {/* image & heart */}
+                <div className="relative h-[120px] sm:h-[140px] flex items-center justify-center bg-transparent p-4">
+                  <div className="absolute top-3 right-3 bg-white rounded-full p-1 shadow flex items-center justify-center">
+                    <button
+                      aria-label="Add to wishlist"
+                      className="text-gray-400 hover:text-red-500"
+                    >
+                      <FiHeart />
                     </button>
                   </div>
-                ) : (
-                  <>
-                    {/* Image Section */}
-                    <div
-                      className={` relative w-full h-[200px] flex items-center justify-center overflow-hidden border border-gray-200 rounded-3xl`}
-                    >
-                      {cat.discount && (
-                        <span className="absolute top-4 right-4 flex items-center gap-1 text-white bg-green-600 text-[15px] font-semibold px-3 py-1  rounded-lg">
-                          <FiTag size={14} /> {cat.discount} OFF
-                        </span>
-                      )}
 
-                      <p className="absolute top-2 left-2 flex items-center  duration-300"></p>
+                  <div className="rounded-xl w-full h-full flex items-center justify-center ">
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      className="max-h-[100px] sm:max-h-[120px] object-contain"
+                    />
+                  </div>
+                </div>
 
-                      {cat.image && (
-                        // Keep native <img/> for simplicity. If you're on Next.js consider switching to next/image for optimization.
-                        <img
-                          src={cat.image}
-                          alt={cat.test}
-                          className={`${cat.size} object-contain`}
-                        />
-                      )}
+                {/* content */}
+                <div className="p-3 sm:p-4 flex flex-col gap-2">
+                  <h3
+                    id={slugify(cat.title)}
+                    className="text-sm sm:text-base font-medium text-gray-900 line-clamp-2 min-h-[44px]"
+                  >
+                    {cat.title}
+                  </h3>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Stars value={cat.rating ?? 0} />
+                      <span className="text-xs text-gray-500">
+                        ({cat.reviews})
+                      </span>
                     </div>
+                    {cat.discount && (
+                      <div className="text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
+                        {cat.discount} OFF
+                      </div>
+                    )}
+                  </div>
 
-                    {/* Text Section */}
-                    <div
-                      className={` p-4 sm:p-6 flex flex-col justify-between flex-1 rounded-3xl `}
-                    >
-                      <div>
-                        <h2 className="text-base sm:text-lg font-medium text-gray-900 line-clamp-2 min-h-[56px]">
-                          {cat.test}
-                        </h2>
-                        <div className="mt-3 flex items-center justify-end gap-2">
-                          {cat.originalPrice && (
-                            <span className="text-gray-400 line-through text-sm sm:text-lg">
-                              ₹{cat.originalPrice}
-                            </span>
-                          )}
-                          {cat.price && (
-                            <span className="text-lg sm:text-2xl font-semibold text-gray-900">
-                              ₹{cat.price}
-                            </span>
-                          )}
+                  <div className="flex items-center justify-between mt-1">
+                    <div>
+                      {cat.originalPrice && (
+                        <div className="text-xs text-gray-400 line-through">
+                          INR {cat.originalPrice}
                         </div>
-                      </div>
-
-                      <div className="mt-6 flex gap-3">
-                        <motion.button
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full flex items-center justify-center gap-2 rounded-3xl  bg-white text-gray-700 py-2 border border-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-200 transition"
-                        >
-                          <FiInfo size={16} /> View Details
-                        </motion.button>
-                        <motion.button
-                          whileTap={{ scale: 0.95 }}
-                          className={`w-full flex items-center justify-center gap-2  rounded-3xl bg-[#0077ED] text-white py-2  text-xs sm:text-sm font-medium hover:opacity-90 transition`}
-                        >
-                          <FiShoppingCart size={16} /> Add to Cart
-                        </motion.button>
+                      )}
+                      <div className="text-base sm:text-lg font-semibold text-gray-900">
+                        INR {cat.price}
                       </div>
                     </div>
-                  </>
-                )}
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                    <div className="text-xs text-gray-400">{cat.reportsIn}</div>
+                  </div>
+
+                  {/* only Add button as requested */}
+                  <motion.button
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      const slug = slugify(cat.title || `item-${idx}`);
+                      const id = `${idx}-${slug}`;
+                      addItem({
+                        id,
+                        name: cat.title || `Item ${idx}`,
+                        price: cat.price ?? 0,
+                        qty: 1,
+                        image: cat.image,
+                      });
+                    }}
+                    className="mt-3 w-22  justify-center  text-sm font-medium hover:opacity-95 transition cursor-pointer relative flex items-center gap-2 px-3 py-2 bg-[#0077ED] 
+                border border-blue-600 rounded-2xl text-white ml-2
+                shadow-inner shadow-white/40"
+                    aria-label={`Add ${cat.title} to cart`}
+                  >
+                    <FaShoppingCart /> Add
+                  </motion.button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
