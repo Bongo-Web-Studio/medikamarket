@@ -155,7 +155,7 @@ const New6: React.FC = () => {
         </h1>
 
         {/* Subheading */}
-        <p className="mt-6 md:mt-10 text-[] md:text-lg max-w-2xl mx-auto text-[#0f0b0bcc]">
+        <p className="mt-6 md:mt-10 text-[10px] md:text-lg max-w-2xl mx-auto text-[#0f0b0bcc]">
           Uncover the real people looking to buy, preview exactly who will see
           your ads before spending a dime, and launch your campaigns with
           confidence.
