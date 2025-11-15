@@ -179,7 +179,7 @@ export default function DentalSectionGrid(): React.ReactElement {
                     {cat.title}
                   </h3>
 
-                  <div className="flex items-center justify-between">
+                  <div className="lg:flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Stars value={cat.rating ?? 0} />
                       <span className="text-xs text-gray-500">({cat.reviews})</span>
