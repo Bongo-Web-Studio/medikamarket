@@ -30,7 +30,7 @@ export default function CTASection() {
         <img
           src="./dadi.png"
           alt="angry-man-illustration"
-          className="w-[7cm] lg:w-[10cm] h-[7cm] lg:h-[10cm] object-contain  absolute top-[150px] left-[100px] lg:top-[50px] lg:left-[450px]  z-10  "
+          className="w-[7cm] lg:w-[10cm] h-[7cm] lg:h-[10cm] object-contain  absolute top-[150px] left-[80px] lg:top-[50px] lg:left-[450px]  z-10  "
         />
       </motion.div>
 
@@ -39,7 +39,7 @@ export default function CTASection() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-3xl lg:text-8xl absolute top-[370px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
+        className="text-3xl lg:text-8xl absolute top-[368px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
       >
         You scrolled all the way here.
       </motion.h1>
