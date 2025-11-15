@@ -1,113 +1,215 @@
-"use client";
+  "use client";
 
-import React from "react";
-import {
-  FaInstagram,
-  FaYoutube,
-  FaLinkedin,
-  FaXTwitter,
-  FaFacebook,
-} from "react-icons/fa6";
+  import React from "react";
+  import {
+    FaInstagram,
+    FaYoutube,
+    FaLinkedin,
+    FaXTwitter,
+    FaFacebook,
+    FaEnvelope,
+  } from "react-icons/fa6";
 
-export default function Footer() {
-  return (
-    <footer className=" border-t border-gray-200 text-gray-800 py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-          {/* Logo + Social */}
-          <div>
-            <div className="flex items-center gap-2">
-              <img
-                src="https://getswipe.in/static/media/swipe_logo.17335c63.svg"
-                alt="Swipe Logo"
-                className="h-10 w-auto"
-              />
+  export default function Footer(): React.ReactElement {
+    const heroBackground = {
+      backgroundImage: [
+        "linear-gradient(90deg, #fff 0%, #fff7ec 8%, #fff2c9 35%, #ffe299 52%, #ffd7b8 66%, #ffeef4 86%, #fff 100%)",
+        "radial-gradient(circle at 50% 78%, rgba(255,196,71,0.22) 0%, rgba(255,196,71,0.14) 10%, rgba(255,196,71,0.06) 22%, transparent 40%)",
+        "linear-gradient(90deg, transparent 70%, rgba(255,222,231,0.65) 100%)",
+      ].join(", "),
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    } as React.CSSProperties;
+
+    return (
+      <footer  className=" bg-[#F5F5F5] border-t border-gray-200 text-gray-800 py-12 rounded-t-[100px]">
+        <div className="max-w-7xl mx-auto p-8 lg:p-0">
+          {/* Top section */}
+          <div className=" lg:flex  gap-10">
+            {/* Logo + Social + Newsletter */}
+            <div className="">
+              <div className="flex items-center gap-3">
+               
+                <div>
+                  <h4 className="font-bold text-lg">Swipe</h4>
+
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-600">Follow us — we post tips, templates & treats!</p>
+
+              <div className="flex items-center gap-3">
+                {[
+                  { Icon: FaInstagram, label: "Instagram" },
+                  { Icon: FaYoutube, label: "YouTube" },
+                  { Icon: FaLinkedin, label: "LinkedIn" },
+                  { Icon: FaXTwitter, label: "X / Twitter" },
+                  { Icon: FaFacebook, label: "Facebook" },
+                ].map(({ Icon, label }, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    aria-label={label}
+                    className="p-2 rounded-full bg-white shadow-sm hover:shadow-md transform hover:-translate-y-0.5 transition-all"
+                  >
+                    <Icon className="text-xl" />
+                  </a>
+                ))}
+              </div>
+
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="mt-2 flex items-center gap-2 bg-white/80 p-2 rounded-2xl shadow-inner"
+              >
+                <label htmlFor="footer-email" className="sr-only">
+                  Your email
+                </label>
+                <div className="flex items-center gap-2 flex-1">
+                  <FaEnvelope className="text-white" />
+                  <input
+                    id="footer-email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full bg-transparent text-sm outline-none px-1"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="  text-sm font-medium  flex items-center gap-2 px-2 w-auto  justify-center  py-2 bg-[#0077ED] 
+                          border border-blue-600 rounded-xl text-white  
+                          shadow-inner shadow-white/40"
+                  aria-label="Subscribe"
+                >
+                  Subscribe
+                </button>
+              </form>
+
+              <p className="text-xs text-gray-400">No spam — only helpful stuff. You can unsubscribe anytime.</p>
             </div>
 
-            <div className="flex items-center space-x-5 mt-6 text-2xl">
-              <FaInstagram className="hover:text-[#007bff] transition" />
-              <FaYoutube className="hover:text-[#007bff] transition" />
-              <FaLinkedin className="hover:text-[#007bff] transition" />
-              <FaXTwitter className="hover:text-[#007bff] transition" />
-              <FaFacebook className="hover:text-[#007bff] transition" />
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li>Home</li>
-              <li>Features</li>
-              <li>Pricing</li>
-              <li>Invoice Formats</li>
-              <li>Tutorials</li>
-            </ul>
-          </div>
-
-          {/* Features */}
-          <div>
-            <h3 className="font-semibold mb-4">Features</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li>Einvoices</li>
-              <li>Ewaybills</li>
-              <li>Swipe AI</li>
-              <li>Online Store</li>
-              <li>Integrations</li>
-            </ul>
-          </div>
-
-          {/* Register */}
-          <div>
-            <h3 className="font-semibold mb-4">Register</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li>Get Started</li>
-              <li>Login</li>
-              <li>Contact Us</li>
-            </ul>
-          </div>
-
-          {/* Legal + Explore */}
-          <div className="flex flex-col sm:flex-row md:flex-col gap-10">
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
+            <div  className="flex flex-wrap gap-10  mt-10 lg:mt-0">
+                 {/* Quick Links */}
+            <div className="w-[5cm] ">
+              <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>Privacy Policy</li>
-                <li>Refund Policy</li>
-                <li>Terms of Service</li>
-                <li>Refer your friends</li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Invoice Formats
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Tutorials
+                  </a>
+                </li>
               </ul>
             </div>
 
-            <div>
-              <h3 className="font-semibold mb-4">Explore</h3>
+            {/* Features */}
+          <div className="w-[5cm] ">
+              <h3 className="font-semibold mb-4">Features</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>Blog</li>
-                <li>Join Community 🤝</li>
-                <li>Product Updates</li>
-                <li>Developers 🧑‍💻</li>
-                <li>Tools</li>
-                <li>We’re hiring 🚀</li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Einvoices
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Ewaybills
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Swipe AI
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Online Store
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Integrations
+                  </a>
+                </li>
               </ul>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom section */}
-        <div className="mt-14 border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
-          <div className="flex items-center gap-2">
-            <span role="img" aria-label="India">
-              🇮🇳
-            </span>
-            <span>IN</span>
-            <span>▼</span>
+            {/* Register */}
+            <div className="w-[5cm] ">
+              <h3 className="font-semibold mb-4">Account</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>
+                  <a href="#" className="hover:underline">
+                    Get Started
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Login
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal + Explore combined on larger screens */}
+         
+            <div className="w-[5cm] ">
+                  <h3 className="font-semibold mb-4">Legal</h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>
+                      <a href="#" className="hover:underline">
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:underline">
+                        Refund Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:underline">
+                        Terms of Service
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:underline">
+                        Refer your friends
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              
+             
+            </div>
+
+         
           </div>
-          <p className="mt-4 sm:mt-0">
-            ©2025 Nextspeed Technologies. All rights reserved.
-          </p>
+
         </div>
-      </div>
-    </footer>
-  );
-}
+      </footer>
+    );
+  }

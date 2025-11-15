@@ -167,16 +167,14 @@ export default function NavbarAppleStyle(): React.ReactElement {
 
         {/* MOBILE MENU */}
         {menuOpen && (
-          <nav className="md:hidden mt-3 bg-white rounded-lg p-4 shadow-sm">
+          <nav className="md:hidden mt-3 bg-white rounded-3xl border border-gray-200   p-4 shadow-sm  absolute w-[80vw] left-[25px] z-40">
             <ul className="flex flex-col gap-3 text-sm">
               {navItems.map((name) => (
                 <li key={name} className="py-2 px-2 rounded hover:bg-neutral-50">
                   {name}
                 </li>
               ))}
-              <li className="pt-2 border-t border-neutral-100">
-                <TopSelectionScroll />
-              </li>
+            
             </ul>
           </nav>
         )}

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiShoppingCart, FiTag, FiHeart } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useCartStore } from "@/store/cartStore/cartStore";
@@ -74,6 +74,17 @@ const categories: Category[] = [
     rating: 4.3,
     reviews: 157,
   },
+  {
+    image:
+      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Small_Equipment.png?tr=q-60,f-avif",
+    bg: "bg-[#FFE082]",
+    title: "Nike Invincible 3 Premium",
+    price: 190,
+    originalPrice: 250,
+    discount: "24%",
+    rating: 4.3,
+    reviews: 157,
+  },
 ];
 
 const slugify = (s = "") =>
@@ -83,7 +94,6 @@ const slugify = (s = "") =>
     .replace(/(^-|-$)+/g, "");
 
 function Stars({ value = 0 }: { value: number }) {
-  // use React.useId to avoid duplicate SVG gradient ids when component renders multiple times
   const uid = React.useId();
   const full = Math.floor(value);
   const half = value - full >= 0.5;
@@ -124,6 +134,42 @@ function Stars({ value = 0 }: { value: number }) {
 export default function DentalSectionGrid(): React.ReactElement {
   const addItem = useCartStore((state) => state.addItem);
 
+  // visible count depending on viewport (desktop vs mobile)
+  const [visibleCount, setVisibleCount] = useState<number>(categories.length);
+
+  // breakpoint: Tailwind's 'lg' is 1024px — using that as "laptop/desktop"
+  const DESKTOP_BREAKPOINT = 1024;
+
+  useEffect(() => {
+    const computeVisible = (len: number, isDesktop: boolean) => {
+      if (isDesktop) {
+        // Desktop rule:
+        // - if <= 5 => show all
+        // - if > 5 => show largest multiple of 5 <= len (so 6 -> 5, 10 -> 10, 11 -> 10)
+        if (len <= 5) return len;
+        const groupsOfFive = Math.floor(len / 5) * 5;
+        return groupsOfFive > 0 ? groupsOfFive : len;
+      } else {
+        // Mobile rule: always show even number of items
+        if (len <= 1) return len; // keep single item if that's all we have
+        return len % 2 === 0 ? len : len - 1;
+      }
+    };
+
+    const update = () => {
+      if (typeof window === "undefined") return;
+      const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
+      setVisibleCount(computeVisible(categories.length, isDesktop));
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // fallback safety
+  const safeVisible = Math.max(0, Math.min(visibleCount, categories.length));
+
   return (
     <section className="relative mx-auto py-6 select-none w-full">
       <div className="px-4 lg:px-12">
@@ -140,10 +186,10 @@ export default function DentalSectionGrid(): React.ReactElement {
         <div className="w-full bg-white">
           {/* Responsive grid: 2 cols on xs, up to 5 on xl */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-            {categories.map((cat, idx) => (
+            {categories.slice(0, safeVisible).map((cat, idx) => (
               <article
                 key={idx}
-                className="bg-white rounded-lg overflow-hidden transition-shadow duration-200 shadow-sm hover:shadow-md"
+                className="bg-white rounded-lg overflow-hidden transition-shadow duration-200 "
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
                 {/* image & wishlist */}

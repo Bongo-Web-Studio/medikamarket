@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { FiShoppingCart, FiTag, FiHeart } from "react-icons/fi";
+import React, { useEffect, useState } from "react";
+import { FiHeart } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useCartStore } from "@/store/cartStore/cartStore";
 import { FaShoppingCart } from "react-icons/fa";
@@ -118,6 +118,42 @@ function Stars({ value = 0 }: { value: number }) {
 export default function DiagnosticsSection(): React.ReactElement {
   const addItem = useCartStore((state) => state.addItem);
 
+  // visible count depending on viewport (desktop vs mobile)
+  const [visibleCount, setVisibleCount] = useState<number>(categories.length);
+
+  // breakpoint: Tailwind's 'lg' is 1024px — using that as "laptop/desktop"
+  const DESKTOP_BREAKPOINT = 1024;
+
+  useEffect(() => {
+    const computeVisible = (len: number, isDesktop: boolean) => {
+      if (isDesktop) {
+        // Desktop rule:
+        // - if <= 5 => show all
+        // - if > 5 => show largest multiple of 5 <= len (so 6 -> 5, 10 -> 10, 11 -> 10)
+        if (len <= 5) return len;
+        const groupsOfFive = Math.floor(len / 5) * 5;
+        return groupsOfFive > 0 ? groupsOfFive : len;
+      } else {
+        // Mobile rule: always show even number of items
+        if (len <= 1) return len; // keep single item if that's all we have
+        return len % 2 === 0 ? len : len - 1;
+      }
+    };
+
+    const update = () => {
+      if (typeof window === "undefined") return;
+      const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
+      setVisibleCount(computeVisible(categories.length, isDesktop));
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // fallback safety
+  const safeVisible = Math.max(0, Math.min(visibleCount, categories.length));
+
   return (
     <section className="relative mx-auto py-6 select-none w-full">
       <div className="px-4 lg:px-12">
@@ -134,10 +170,10 @@ export default function DiagnosticsSection(): React.ReactElement {
         <div className="w-full bg-white">
           {/* Responsive grid: 2 cols on xs, up to 5 on xl */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-            {categories.map((cat, idx) => (
+            {categories.slice(0, safeVisible).map((cat, idx) => (
               <article
                 key={idx}
-                className="bg-white rounded-lg overflow-hidden transition-shadow duration-200 shadow-sm hover:shadow-md"
+                className="bg-white rounded-lg overflow-hidden transition-shadow duration-200"
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
                 {/* image & wishlist */}
