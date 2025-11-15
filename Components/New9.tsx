@@ -39,7 +39,7 @@ export default function CTASection() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-3xl lg:text-8xl absolute top-[368px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
+        className="text-2xl lg:text-8xl absolute top-[368px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
       >
         You scrolled all the way here.
       </motion.h1>
