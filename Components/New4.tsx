@@ -1,7 +1,7 @@
-// src/components/New4.tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 type Testimonial = {
   name: string;
@@ -44,12 +44,15 @@ export default function New4(): React.ReactElement {
     },
   ];
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const groupRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null); // viewport
+  const trackRef = useRef<HTMLDivElement | null>(null); // the element we animate
+  const groupRef = useRef<HTMLDivElement | null>(null); // single group (will be duplicated)
+  const tweenRef = useRef<any>(null);
+
   const [cardWidth, setCardWidth] = useState(320);
   const [gap, setGap] = useState(20);
-  const [animDuration, setAnimDuration] = useState(5); // FASTER animation speed
 
+  // slidesPerView heuristic (keeps your original behavior)
   function getSlidesPerView(w: number) {
     if (w >= 1600) return 4.2;
     if (w >= 1280) return 3.3;
@@ -85,25 +88,90 @@ export default function New4(): React.ReactElement {
     };
   }, []);
 
-  // compute marquee duration based on group width
+  // GSAP marquee setup
   useEffect(() => {
-    const compute = () => {
-      const g = groupRef.current;
-      if (!g) return;
-      const groupWidth = g.getBoundingClientRect().width;
+    const setup = () => {
+      const track = trackRef.current;
+      const group = groupRef.current;
+      const viewport = containerRef.current;
+      if (!track || !group || !viewport) return;
 
-      if (!groupWidth) return;
+      // ensure any previous tween is killed
+      if (tweenRef.current) {
+        tweenRef.current.kill();
+        tweenRef.current = null;
+      }
 
-      // SUPER FAST SPEED
-      const speed = 900; // px/sec (change to 1200 for even faster)
-      const duration = Math.max(2, groupWidth / speed);
-      setAnimDuration(duration);
+      // single group's width (one full set)
+      const singleWidth = group.getBoundingClientRect().width;
+      if (!singleWidth) return;
+
+      // make sure track contains exactly two groups side-by-side
+      // (we rely on markup duplicating the group; CSS flex handles layout)
+
+      // choose speed in px/sec (larger => faster). adjust as you like.
+      // original code used 900 px/sec for "super fast" — keep that option.
+      const speed = 900; // px per second (play with this value)
+
+      const duration = Math.max(3, singleWidth / speed);
+
+      // start from x = 0, animate left by singleWidth so second duplicate appears
+      tweenRef.current = gsap.to(track, {
+        x: `-=${singleWidth}`,
+        duration,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          // keep numbers stable and avoid accumulating floating precision
+          x: (x: string) => {
+            // gsap provides values like "-123.45px" — we just return that
+            return x;
+          },
+        },
+      });
+
+      // pause on pointer enter / resume on leave (works for mouse and touch)
+      const onPointerEnter = () => tweenRef.current && tweenRef.current.pause();
+      const onPointerLeave = () => tweenRef.current && tweenRef.current.play();
+
+      viewport.addEventListener("pointerenter", onPointerEnter);
+      viewport.addEventListener("pointerleave", onPointerLeave);
+      // also handle touch
+      viewport.addEventListener("touchstart", onPointerEnter, { passive: true });
+      viewport.addEventListener("touchend", onPointerLeave, { passive: true });
+
+      // Cleanup handler stored on the ref for removal on next setup
+      (tweenRef.current as any).__cleanup = () => {
+        viewport.removeEventListener("pointerenter", onPointerEnter);
+        viewport.removeEventListener("pointerleave", onPointerLeave);
+        viewport.removeEventListener("touchstart", onPointerEnter);
+        viewport.removeEventListener("touchend", onPointerLeave);
+      };
     };
 
-    compute();
-    window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
-  }, [cardWidth, gap]);
+    // initial setup
+    setup();
+
+    // re-setup on resize (debounced)
+    let t: number | null = null;
+    const onResize = () => {
+      if (t) window.clearTimeout(t);
+      t = window.setTimeout(() => setup(), 120);
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      if (tweenRef.current) {
+        // call stored cleanup
+        try {
+          (tweenRef.current as any).__cleanup && (tweenRef.current as any).__cleanup();
+        } catch (e) {}
+        tweenRef.current.kill();
+        tweenRef.current = null;
+      }
+    };
+  }, [cardWidth, gap, testimonials.length]);
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20">
@@ -117,13 +185,11 @@ export default function New4(): React.ReactElement {
       </div>
 
       <div ref={containerRef} className="w-full mx-auto px-4 overflow-hidden">
+        {/* trackRef is the element we animate with GSAP. It contains TWO identical groups */}
         <div
-          className="marquee-track"
-          style={{
-            display: "flex",
-            animation: `marquee ${animDuration}s linear infinite`,
-            willChange: "transform",
-          }}
+          ref={trackRef}
+          className="flex items-stretch"
+          style={{ willChange: "transform" }}
         >
           <div ref={groupRef} className="flex items-stretch" style={{ gap }}>
             {testimonials.map((t, i) => (
@@ -138,14 +204,6 @@ export default function New4(): React.ReactElement {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        .marquee-track:hover { animation-play-state: paused; }
-      `}</style>
     </section>
   );
 }
