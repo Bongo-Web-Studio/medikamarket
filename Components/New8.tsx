@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 
+import React from "react";
+
 const brands = [
   {
     name: "Poly Medicure",
@@ -36,6 +38,15 @@ const brands = [
     logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAclBMVEX///+xxv4iZ/2+zv7P2v1fi/wxb/zo7/9tkvrF0/ywwv6Fpf2XsP2iufshZf1Mff0ARP7r8v6huf9ch/72+/sATf+Eof+TrPxEd/7W4v4AP/+etf4AVf/C0v8ASv9zl/7x9v5Tgf4CXP96nP7h6f6Kqf5Yn0qhAAAAeElEQVR4Ae2LtQEDQQDD/MyMx7z/iMENAt2rtCVc/JMojpM0Q16UVd2g7dK4rzGM0+ucl3RM8nUrhmQusR/VSWgdF++yGxgXWy6fp8LeVnkntRmrd2mdFzlkcSbzWT1K7khRDcfrFDNAAtTUElE2UUJagCxO4zsu7klBBuaCTIJkAAAAAElFTkSuQmCC",
     displayName: "Philips",
   },
+  {
+    name: "Nureca Ltd",
+    logo: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3NzE3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIABwAHAMBEQACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAEBQYHAwD/xAAqEAABAwIEBgEFAQAAAAAAAAABAgMRBBIABhMhBRQiMUFxgSMyUVJhFf/EABoBAAIDAQEAAAAAAAAAAAAAAAIDAQQFAAb/xAArEQABAwIDBwMFAAAAAAAAAAABAAIRAyESMUEEE1FhcYGhIpHwBRSxwdH/2gAMAwEAAhEDEQA/AKKl4nR8zy5dIcv0+pCgkq/UKIgn+Thm6fhxQokJt/p0tLVtUrxeDzsWBNO4oH5CSPe+3nHNpuc0uGXULpVHSg7YWpTJogo2IPrHLlgaM0ZedcWhzjiBSqqk1JSmievuSUkC6IiUjxi0yplDbxCGEenM2Wl8PoaYZgcS5TsqbW9ytRc4pSQFKmJEmT384a1tQvc4NzPJQiXcw5ef1UNZoW23Lmgnkqk2XrC+qUkKtgACIicOZs9a3o8hRI4qmy7nXKnCKJ6nPGtXUqnnwsUD6T9RZWQRaexJG3iMRU+n7XUIODQDMad1IcAsFoKvgRoG2X6UpqdAtqeDdwuN/VH5TKTI7j1viintW8xMdaZj2t3v07q619DBBF4/v4TinrsvDSRygIQUhSyyOqDue0yQJgmNztIw9uz7eZIfnOvty/dheEW92Www+PnzmugNA8iWltNshwBwaKdRckQUmBaIBHjcebsalD7mm64JdBj1HCIBsRJm8cTB0w3S7dOFjAm9r9sot08r3ECyai+lb021pCtMwLD5GxPv5xtfThVFDDWdJBIniNNB05xKrbRhxywQDpwUMxjzNJEUwYxo0kBTJjGjSQFHI+3F9uSFf//Z",
+  },
+  {
+    name: "Laxmi Dental",
+    logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcEzkHCLjHiTjHiS9WVuIioqJiYmJiYnkHSO2YWOJiYmJiYmZdHXiISaJiYnkHSOJiYnjHiSJiYmJiYnZKzCJiYnlGyGtamvjiTIkAAAAGHRSTlMAImhRV1xMKf///6wQnJyS7fnbxwWCYF8O97D9AAAAfUlEQVR4AdXQxQEAIRAEwcFhzz3/TM/d+NLfQhchxjggpFJKmztyC1hHU1H8hElsjNEpkXnADFNxPuojjlH+gZr0FYsNQekHltUZaxSJH1J6R8ZY/PSgEe0Qf/xKDTHGxhtvQ4jrOdMQaVxwbhx+Zc5WM855O9bpGNdqBFEP8S0GPil95TMAAAAASUVORK5CYII=",
+    displayName: "Laxmi Dental",
+  },
 ];
 
 export default function New8() {
@@ -45,31 +56,34 @@ export default function New8() {
         Explore Popular Brand Equipment
       </h2>
 
-      <div className=" flex flex-wrap justify-center items-center    gap-2">
-        {brands.map((b, idx) => (
-          <article
-            key={idx}
-            className="w-[4cm] lg:w-[6cm] lg:flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-lg transform hover:-translate-y-1 transition"
-            role="button"
-            tabIndex={0}
-            aria-label={`Open ${b.displayName || b.name} store`}
-          >
-            <div className="w-16 h-16 rounded-full  flex items-center justify-center overflow-hidden">
-              <img
-                src={b.logo}
-                alt={`${b.displayName || b.name} logo`}
-                className="max-h-10 max-w-[70%] object-contain"
-                loading="lazy"
-              />
-            </div>
+      <div className="w-full bg-transparent">
+        {/* responsive grid: 2 on xs, 3 sm, 4 md, 5 lg */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 items-stretch justify-items-center">
+          {brands.map((b, idx) => (
+            <article
+              key={idx}
+              className="w-full max-w-[320px] p-4 bg-[#F5F5F7] rounded-lg transform hover:-translate-y-1 transition shadow-sm flex flex-col items-center gap-3"
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${b.displayName || b.name} store`}
+            >
+              <div className="w-16 h-16 rounded-full flex items-center justify-center overflow-hidden bg-white">
+                <img
+                  src={b.logo}
+                  alt={`${b.displayName || b.name} logo`}
+                  className="max-h-10 max-w-[70%] object-contain"
+                  loading="lazy"
+                />
+              </div>
 
-            <div className="flex-1">
-              <h3 className="text-sm lg:text-lg font-semibold text-gray-800 w-full flex justify-center items-center">
-                {b.displayName || b.name}
-              </h3>
-            </div>
-          </article>
-        ))}
+              <div className="flex-1 w-full flex items-center justify-center">
+                <h3 className="text-sm lg:text-lg font-semibold text-center text-gray-800">
+                  {b.displayName || b.name}
+                </h3>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

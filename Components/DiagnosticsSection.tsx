@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { FiShoppingCart, FiTag, FiHeart } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -27,18 +28,16 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "22%",
     reportsIn: "12 Hours",
-
   },
   {
     image:
-      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/Specialities/biochemistry.jpg?tr=q-60,f-avif  ",
+      "https://ik.imagekit.io/z6mqjyyzz/media/public/default_images/Images/Specialities/biochemistry.jpg?tr=q-60,f-avif",
     bg: "bg-[#FFF59D]",
     title: "BhCG Beta HCG / Blood Pregnancy Hormone Test - Serum",
     price: 899,
     originalPrice: 1200,
     discount: "25%",
     reportsIn: "24 Hours",
-
   },
   {
     image:
@@ -49,7 +48,6 @@ const categories: Category[] = [
     originalPrice: 1600,
     discount: "19%",
     reportsIn: "18 Hours",
-  
   },
   {
     image:
@@ -60,7 +58,6 @@ const categories: Category[] = [
     originalPrice: 1400,
     discount: "28%",
     reportsIn: "15 Hours",
-
   },
   {
     image:
@@ -71,9 +68,7 @@ const categories: Category[] = [
     originalPrice: 2000,
     discount: "20%",
     reportsIn: "20 Hours",
-  
   },
- 
 ];
 
 const slugify = (s = "") =>
@@ -83,6 +78,7 @@ const slugify = (s = "") =>
     .replace(/(^-|-$)+/g, "");
 
 function Stars({ value = 0 }: { value: number }) {
+  const uid = React.useId();
   const full = Math.floor(value);
   const half = value - full >= 0.5;
   const total = 5;
@@ -91,6 +87,7 @@ function Stars({ value = 0 }: { value: number }) {
       {Array.from({ length: total }).map((_, i) => {
         const idx = i + 1;
         const fill = idx <= full ? 1 : idx === full + 1 && half ? 0.5 : 0;
+        const gid = `g-${uid}-${i}`;
         return (
           <svg
             key={i}
@@ -102,14 +99,14 @@ function Stars({ value = 0 }: { value: number }) {
             className="inline-block"
           >
             <defs>
-              <linearGradient id={`g-${i}`}>
+              <linearGradient id={gid}>
                 <stop offset={`${fill * 100}%`} stopColor="#F59E0B" />
                 <stop offset={`${fill * 100}%`} stopColor="#E5E7EB" />
               </linearGradient>
             </defs>
             <path
               d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-              fill={`url(#g-${i})`}
+              fill={`url(#${gid})`}
             />
           </svg>
         );
@@ -133,17 +130,22 @@ export default function DiagnosticsSection(): React.ReactElement {
           </button>
         </div>
 
-        {/* Product strip */}
+        {/* Grid product strip */}
         <div className="w-full bg-white">
-          <div className="flex  flex-wrap lg:flex-row gap-2 ">
+          {/* Responsive grid: 2 cols on xs, up to 5 on xl */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
             {categories.map((cat, idx) => (
               <article
                 key={idx}
-                className=" w-[176px] sm:w-[200px] md:w-[220px] lg:w-[250px] xl:w-[272px]  transition-all duration-200 overflow-hidden relative"
+                className="bg-white rounded-lg overflow-hidden transition-shadow duration-200 shadow-sm hover:shadow-md"
                 aria-labelledby={slugify(cat.title || `item-${idx}`)}
               >
-                {/* image & heart */}
-                <div className="relative h-[120px] sm:h-[140px] flex items-center justify-center bg-transparent p-4">
+                {/* image & wishlist */}
+                <div
+                  className={`relative flex items-center justify-center p-4 h-32 sm:h-36 md:h-40 lg:h-44  bg-white ${
+                    cat.bg ?? "bg-transparent"
+                  }`}
+                >
                   <div className="absolute top-3 right-3 bg-white rounded-full p-1 shadow flex items-center justify-center">
                     <button
                       aria-label="Add to wishlist"
@@ -153,7 +155,7 @@ export default function DiagnosticsSection(): React.ReactElement {
                     </button>
                   </div>
 
-                  <div className="rounded-xl w-full h-full flex items-center justify-center ">
+                  <div className="rounded-xl w-full h-full flex items-center justify-center">
                     <img
                       src={cat.image}
                       alt={cat.title}
@@ -171,15 +173,14 @@ export default function DiagnosticsSection(): React.ReactElement {
                     {cat.title}
                   </h3>
 
-                  <div className="lg:flex items-center justify-between">
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Stars value={cat.rating ?? 0} />
-                      <span className="text-xs text-gray-500">
-                        ({cat.reviews})
-                      </span>
+                      <span className="text-xs text-gray-500">({cat.reviews})</span>
                     </div>
+
                     {cat.discount && (
-                      <div className="w-[4rem] lg:w-[5rem] text-[10px]  lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
+                      <div className="text-[10px] lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
                         {cat.discount} OFF
                       </div>
                     )}
@@ -213,9 +214,7 @@ export default function DiagnosticsSection(): React.ReactElement {
                         image: cat.image,
                       });
                     }}
-                    className="mt-3 w-22  justify-center  text-sm font-medium hover:opacity-95 transition cursor-pointer relative flex items-center gap-2 px-3 py-2 bg-[#0077ED] 
-                border border-blue-600 rounded-2xl text-white
-                shadow-inner shadow-white/40"
+                    className="mt-3 inline-flex items-center gap-2 px-3 py-2 text-sm font-medium hover:opacity-95 transition cursor-pointer rounded-2xl bg-[#0077ED] border border-blue-600 text-white shadow-inner shadow-white/40"
                     aria-label={`Add ${cat.title} to cart`}
                   >
                     <FaShoppingCart /> Add
