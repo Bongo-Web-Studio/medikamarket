@@ -84,12 +84,12 @@
                 </button>
               </form>
 
-              <p className="text-xs text-gray-400">No spam — only helpful stuff. You can unsubscribe anytime.</p>
+           
             </div>
 
             <div  className="flex flex-wrap gap-10  mt-10 lg:mt-0">
                  {/* Quick Links */}
-            <div className="w-[5cm] ">
+            <div className="w-[4cm] ">
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -121,7 +121,7 @@
             </div>
 
             {/* Features */}
-          <div className="w-[5cm] ">
+          <div className="w-[4cm] ">
               <h3 className="font-semibold mb-4">Features</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -153,7 +153,7 @@
             </div>
 
             {/* Register */}
-            <div className="w-[5cm] ">
+            <div className="w-[4cm] ">
               <h3 className="font-semibold mb-4">Account</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -176,7 +176,7 @@
 
             {/* Legal + Explore combined on larger screens */}
          
-            <div className="w-[5cm] ">
+            <div className="w-[4cm] ">
                   <h3 className="font-semibold mb-4">Legal</h3>
                   <ul className="space-y-2 text-gray-600">
                     <li>

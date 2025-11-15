@@ -18,7 +18,7 @@ export default function CTASection() {
   return (
     <section
       style={heroBackground}
-      className=" relative w-[99vw] lg:w-[80vw] h-[55vh] border border-gray-200 rounded-[70px] overflow-hidden flex flex-col items-center justify-center text-center "
+      className=" relative w-[99vw] lg:w-[80vw] h-[50vh] lg:h-[55vh] border border-gray-200 rounded-[70px] overflow-hidden flex flex-col items-center justify-center text-center "
     >
       {/* Illustration */}
       <motion.div
@@ -39,13 +39,13 @@ export default function CTASection() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-4xl lg:text-8xl absolute top-[370px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
+        className="text-3xl lg:text-8xl absolute top-[370px] lg:top-[322px]  font-bold text-[#3B1016] z-20 "
       >
         You scrolled all the way here.
       </motion.h1>
 
       <div
-        className="absolute top-[10px]  lg:right-[120px] w-[70vw] h-[26vh] 
+        className="absolute top-[10px]  lg:right-[120px] w-[90vw] h-[26vh] 
     lg:w-[26vw] lg:h-[25vh] rounded-[40px] 
     bg-white backdrop-blur-2xl 
     
@@ -54,12 +54,12 @@ export default function CTASection() {
       >
         {/* Content */}
         <div className="  h-full pt-5 p-3">
-          <h1 className="text-xl font-semibold text-[#3B1016] w-full flex  ">
+          <h1 className="text-lg font-semibold text-[#3B1016] w-full flex  ">
             <div className="w-[20%] ">
               <span className=" text-2xl lg:text-4xl "> 😤 </span>
             </div>
 
-            <div className="w-[80%]  text-start text-lg">
+            <div className="w-[80%]  text-start ">
               I know you want Medical Equipments in best Affordable price
             </div>
           </h1>
