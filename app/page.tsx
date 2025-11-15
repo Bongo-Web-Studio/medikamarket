@@ -48,7 +48,7 @@ export default function Home() {
           <DentalSectionGrid />
 
           {/* Responsive banners: stack on small screens, row on large */}
-          <section className=" hidden w-full lg:flex flex-col lg:flex-row items-center justify-center gap-6 py-6">
+          <section className=" hidden w-full lg:flex flex-col lg:flex-row items-center justify-center gap-6 py-6 p-10">
             {banners.map((b, idx) => (
               <div
                 key={b.src + idx}

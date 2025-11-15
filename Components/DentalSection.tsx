@@ -186,7 +186,7 @@ export default function DentalSectionGrid(): React.ReactElement {
                     </div>
 
                     {cat.discount && (
-                      <div className="text-[10px] lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
+                      <div className=" w-[4rem] lg:w-auto text-[10px] lg:text-[12px] bg-green-600 text-white px-2 py-1 rounded-md font-semibold">
                         {cat.discount} OFF
                       </div>
                     )}
